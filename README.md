@@ -23,8 +23,8 @@ Alternatively, and if you do not want to build a PCB by yourself and like to buy
 
 #### Be supportive of my dedication and work towards technology education and buy me a coffee. Link below.
 
-![](https://github.com/aeonSolutions/AeonLabs-WIFI-BLE-RFID-NFC-Desk-Contacless-Reader-Writer/blob/main/designs/pcb_front.png)
-![](https://github.com/aeonSolutions/AeonLabs-WIFI-BLE-RFID-NFC-Desk-Contacless-Reader-Writer/blob/main/designs/pcb_back.png)
+![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_front.png)
+![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_back.png)
 
 ________________________________________________________________________________________________________________
 
