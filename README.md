@@ -6,7 +6,7 @@ This repo contains the KiCad files for the AeonLabs Home Automation Smart Coffee
 ![](https://img.shields.io/github/downloads/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/total)
 
 ## Revisions
-- revision 2.3
+- revision 2.0
   - added MCU firmware download connection 
 
 
