@@ -34,7 +34,6 @@ ________________________________________________________________________________
 - Capacitor 2.2uF SMD 1206 : https://s.click.aliexpress.com/e/_AVdmzr
 - Resistor SMD 1206 330R x3 : https://s.click.aliexpress.com/e/_A7OXrR
 - ESP32 WROOM32 x1 : https://s.click.aliexpress.com/e/_AF7N6l
-- Buzzer x1: https://s.click.aliexpress.com/e/_AF7N6l
 - LED RGB x1: https://s.click.aliexpress.com/e/_AccXHT
 - RFID RC522 x1 (optional) : https://s.click.aliexpress.com/e/_Am0LAH
 
