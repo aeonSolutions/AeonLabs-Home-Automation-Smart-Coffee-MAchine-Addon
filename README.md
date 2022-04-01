@@ -1,4 +1,4 @@
-# AeonLabs Home Automation Smart Coffee MAchine Addon
+# AeonLabs Home Automation Smart Coffee Machine Addon
 This repo contains the KiCad files for the AeonLabs Home Automation Smart Coffee MAchine Addon. This PCB adds WiFi and BLE capabilities to any home or office coffee machine. Is able to control water temperature, order a cup of coffee and grid coffee beans.
 
 
