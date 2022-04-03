@@ -22,6 +22,10 @@ Or,
 
 Download the Gerber files in the release section of this repository
 
+## Join the WhatsApp Group
+If you like this kind of projects and want to stay updated with the lastest research ideias and prototypes during the day and week, join the WhatsApp Group
+[LDAD Lab & Prototyping](https://chat.whatsapp.com/FkNC7u83kuy2QRA5sqjBVg)
+
 ## Fully assembled PCB
 Alternatively, and if you do not want to build a PCB by yourself and like to buy one, mail me at mtpsilva@gmail.com. The price will be around 20eur plus postage fees.
 (I will also deliver the assembled PCB with all the components in place at a fair aditonal cost).
