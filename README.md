@@ -30,6 +30,11 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
 ![](https://img.shields.io/github/downloads/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/total)
 
 ## Revisions
+- revision 3.x
+  - Mobile App to control de coffee Machine over the network
+  - Linux, Mac, Windows App to control de coffee Machine over the network
+- revision 2.1
+  - small pcb components reaarangement and silkscreen; 
 - revision 2.0
   - added MCU firmware download connection 
 
