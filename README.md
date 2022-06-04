@@ -34,7 +34,7 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
   - Mobile App to control de coffee Machine over the network
   - Linux, Mac, Windows App to control de coffee Machine over the network
 - revision 2.1
-  - small pcb components reaarangement and silkscreen; 
+  - small pcb component reaarangement and silkscreen; 
 - revision 2.0
   - added MCU firmware download connection 
 
