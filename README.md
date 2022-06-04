@@ -1,9 +1,19 @@
 # AeonLabs Home Automation Smart Coffee Machine Addon
-This repo contains the KiCad files for the AeonLabs Home Automation Smart Coffee Machine Addon. The PCB uses a ESP32-S3-WROOM1 packed with Bluetooth, BLE and WiFi ready to be programmed for Home Assistant ! Is able to :
-- control water temperature
-- low water detection in the water tank
-- order a cup of coffee (with possibility control of quantity of coffee in the cup)
--  grind coffee beans. 
+This repo contains the KiCad files for the AeonLabs Home Automation Smart Coffee Machine Addon. T
+
+This is a PCB for Home Automation Smart Coffee Machine Addon. The PCB uses a ESP32-S3-WROOM1 packed with Bluetooth, BLE and WiFi ready to be programmed for Home Assistant ! Get the PCB schematics on the GitHub repository below.  Easy installation on any home or office coffee machine.  
+
+This Addon Enables any vintage coffee machine to be connected to the internet (or only to a personal network). Can connect with any Computer, Mobile App or Home Assistant (home automaton).
+
+Functionalities available: 
+
+* control water temperature;
+* low water detection in the water tank; 
+* order a cup of coffee (with possibility control of quantity of coffee in the cup);
+* grind coffee beans.;
+* connect to a Nextion LCD Touch ;
+* RGB LED;
+* Magnetic Buzzer;
   
 To all those looking for a LCD touch solutions, this PCB features a connection to NEXTION LCD panels so one car order a cup of coffee using the LCD Touch. This PCB can be powered using 220V AC or regular 5V DC. Control of the coffee machine can be made using a 220V relays.
 
