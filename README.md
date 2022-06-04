@@ -41,7 +41,7 @@ The price will be around 30eur plus postage fees.
 
 #### Be supportive of my dedication and work towards technology education and buy me a coffee. Link below.
 
-![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_front.png)
+![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_front.jpg)
 ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_back.png)
 
 #### Philips Senseo Coffee Machine 
