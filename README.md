@@ -7,11 +7,11 @@ This Addon Enables any vintage coffee machine to be connected to the internet (o
 
 Functionalities available: 
 
-* control water temperature;
-* low water detection in the water tank; 
-* order a cup of coffee (with possibility control of quantity of coffee in the cup);
-* grind coffee beans.;
-* connect to a Nextion LCD Touch ;
+* Control water temperature;
+* Low water detection in the water tank; 
+* Order a cup of coffee (with possibility control of quantity of coffee in the cup);
+* Grind coffee beans.;
+* Connect to a Nextion LCD Touch ;
 * RGB LED;
 * Magnetic Buzzer;
   
