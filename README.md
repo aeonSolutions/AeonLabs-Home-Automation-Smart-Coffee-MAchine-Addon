@@ -18,11 +18,7 @@ To all those looking for a LCD touch solutions, this PCB features a connection t
 
 
 ## Download options
-Download this repository if you need the KiCad Files
-
-Or,
-
-Download the Gerber files in the release section of this repository
+Download this repository if you need the KiCad Files or, Download the Gerber files in the release section of this repository
 
 ## Liked it ? Get a Free PCB for yourself
 Send me your Device or hardware and i will design a custom PCB for it. Free of charge. Contact-me on WhatsApp or email for more info. 
