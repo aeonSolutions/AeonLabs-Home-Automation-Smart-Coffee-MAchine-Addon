@@ -53,7 +53,7 @@ If you have any Questions or simply  like this kind of projects and want to stay
 ## Buy a fully assembled PCB
 Alternatively, and if you do not want to build a PCB by yourself and like to buy one, you can do it here:
 
-[Tindie.com](https://www.tindie.com/products/aeonlabs/smart-vintage-coffee-machine-addon/)
+[![](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/tindie_sell.png)](https://www.tindie.com/stores/aeonlabs/)
 
 The price will be around 30eur plus postage fees.
 (I will also deliver the assembled PCB with all the components in place at a fair aditonal cost).
