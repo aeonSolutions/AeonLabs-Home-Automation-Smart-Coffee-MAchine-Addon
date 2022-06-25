@@ -66,7 +66,12 @@ The price will be around 30eur plus postage fees.
 #### Philips Senseo Coffee Machine 
 Don't forget to checkout some cool photos of assembly on a Philips Senseo Coffee Machine [here](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/tree/main/Philips%20Senseo)
 ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/Philips%20Senseo/20220604_134341.jpg)
+
+
 ________________________________________________________________________________________________________________
+## [Go back to main catalogue page](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue)
+________________________________________________________________________________________________________________
+
 
 ## PCB Parts list
 - DC2DC converter HX4002B x2 : https://s.click.aliexpress.com/e/_Ak7IPx
