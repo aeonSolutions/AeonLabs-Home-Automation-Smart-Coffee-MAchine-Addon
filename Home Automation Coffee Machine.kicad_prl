@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 31,
     "active_layer_preset": "",
     "auto_track_width": false,
     "hidden_nets": [],
@@ -63,11 +63,11 @@
       35,
       36
     ],
-    "visible_layers": "0003eef_00000000",
+    "visible_layers": "0001c10_80000001",
     "zone_display_mode": 0
   },
   "meta": {
-    "filename": "MINI MAX6675.kicad_prl",
+    "filename": "Home Automation Coffee Machine.kicad_prl",
     "version": 3
   },
   "project": {
