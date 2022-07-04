@@ -47,6 +47,8 @@ Download this repository if you need the KiCad Files or, Download the Gerber fil
 ## Liked it ? Get a Free PCB for yourself
 Send me your Device or hardware and i will design a custom PCB for it. Free of charge. Contact-me on WhatsApp or email for more info. 
 
+[![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/Designs/ad.png)](https://www.youtube.com/watch?v=GAxtMLHbr0I)
+
 ## Q&A WhatsApp Group
 If you have any Questions or simply  like this kind of projects and want to stay updated with the latest research ideas and prototypes during the day and week, join the WhatsApp Group
 [LDAD Lab & Prototyping](https://chat.whatsapp.com/FkNC7u83kuy2QRA5sqjBVg)
