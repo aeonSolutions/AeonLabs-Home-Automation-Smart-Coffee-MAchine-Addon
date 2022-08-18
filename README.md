@@ -30,11 +30,7 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
 ![](https://img.shields.io/github/downloads/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/total)
 
 ### Status
-![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  tested Up to revision 2.3 
-
-![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_yellow.png)  revision 2.4 Waiting for first batch from factory to be tested.
-
-If you already tested this PCB send me a message. Thank you
+![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  fully working.
 
 ## Revisions
 - revision 3.x
