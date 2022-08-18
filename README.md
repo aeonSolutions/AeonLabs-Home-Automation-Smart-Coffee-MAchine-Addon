@@ -1,6 +1,6 @@
 # AeonLabs Home Automation Smart Coffee Machine Addon
 This repo contains the KiCad files for the AeonLabs Home Automation Smart Coffee Machine Addon. Easy installation on any home or office coffee machine.  
-There are 2 imporved versions of this PCB with better components and without any PCB modules. Go to the private subcritpion repository to get them.
+There are 2 imporved versions of this PCB with better components and without any PCB modules. Go to the private subscription based repository to get them.
 
 This is a PCB for Home Automation Smart Coffee Machine Addon. The PCB uses a ESP32-WROOM32 packed with Bluetooth, BLE and WiFi ready to be programmed for Home Assistant ! Get the PCB schematics on the GitHub repository below.  
 
