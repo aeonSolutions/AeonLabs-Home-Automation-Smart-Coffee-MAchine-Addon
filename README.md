@@ -14,6 +14,7 @@ Functionalities available:
 * Magnetic Buzzer;
   
 
+
 To all those looking for a LCD touch solutions, this PCB features a connection to NEXTION LCD panels so one car order a cup of coffee using the LCD Touch. 
 
 * This PCB can be powered using 220V AC or regular 5V DC. 
@@ -27,8 +28,12 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
 ![](https://views.whatilearened.today/views/github/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon.svg)
 ![](https://img.shields.io/github/downloads/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/total)
 
+<br>
+
 ### Status
 ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  fully working.
+
+<br>
 
 ## Revisions
 - revision 01-2023
@@ -37,18 +42,25 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
   - Mobile App to control de coffee Machine over the network
   - Linux, Mac, Windows App to control de coffee Machine over the network
 
+<br>
 
 ## Download options
 Download the Gerber files located in the forlder "Gerber"  of this repository
+
+<br>
 
 ## Liked it ? Get a Free PCB for yourself
 Send me your Device or hardware and i will design a custom PCB for it. Free of charge. Contact-me on WhatsApp or email for more info. 
 
 [![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/ad.png)](https://www.youtube.com/watch?v=GAxtMLHbr0I)
 
+<br>
+
 ## Q&A WhatsApp Group
 If you have any Questions or simply  like this kind of projects and want to stay updated with the latest research ideas and prototypes during the day and week, join the WhatsApp Group
 [LDAD Lab & Prototyping](https://chat.whatsapp.com/FkNC7u83kuy2QRA5sqjBVg)
+
+<br>
 
 ## Buy a fully assembled PCB
 Alternatively, and if you do not want to build a PCB by yourself and like to buy one, you can do it here:
@@ -58,10 +70,14 @@ Alternatively, and if you do not want to build a PCB by yourself and like to buy
 The price will be around 30eur plus postage fees.
 (I will also deliver the assembled PCB with all the components in place at a fair aditonal cost).
 
+<br>
+
 #### Be supportive of my dedication and work towards technology education and buy me a coffee. Link below.
 
 ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_front.jpg)
 ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_back.png)
+
+<br>
 
 #### Philips Senseo Coffee Machine 
 Don't forget to checkout some cool photos of assembly on a Philips Senseo Coffee Machine [here](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/tree/main/Philips%20Senseo)
@@ -73,7 +89,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________
 
 
-## PCB Parts list
+## PCB Parts list (incomplete)
 - DC2DC converter HX4002B x2 : https://s.click.aliexpress.com/e/_Ak7IPx
 - Capacitor 100nF SMD 1206 : https://s.click.aliexpress.com/e/_AVdmzr
 - Capacitor 2.2uF SMD 1206 : https://s.click.aliexpress.com/e/_AVdmzr
@@ -82,6 +98,9 @@ ________________________________________________________________________________
 - LED RGB x1: https://s.click.aliexpress.com/e/_AccXHT
 - RFID RC522 x1 (optional) : https://s.click.aliexpress.com/e/_Am0LAH
 
+**to get the complete Part list in a BOM file, consider supporting this repostitory by maing a small donation. Links on the side and at the top. Thank you** 
+
+<br>
 
 ## Firmware Download 
 one can use the PCB in the repository [AeonLabs-MCU-Burner-USB-to-UART-TTL](https://github.com/aeonSolutions/AeonLabs-MCU-Burner-USB-to-UART-TTL) to program the ESP32 WROOM32 MCU on this PCB.
