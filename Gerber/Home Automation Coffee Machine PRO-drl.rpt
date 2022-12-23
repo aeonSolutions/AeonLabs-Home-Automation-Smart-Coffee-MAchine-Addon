@@ -1,0 +1,29 @@
+Drill report for Home Automation Coffee Machine PRO.kicad_pcb
+Created on 12/23/2022 6:09:15 PM
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'Home Automation Coffee Machine PRO-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.400mm  0.0157"  (121 holes)
+    T2  0.500mm  0.0197"  (36 holes)  (with 4 slots)
+    T3  0.600mm  0.0236"  (2 holes)
+    T4  0.950mm  0.0374"  (7 holes)
+    T5  1.000mm  0.0394"  (10 holes)
+    T6  1.010mm  0.0398"  (2 holes)
+    T7  1.520mm  0.0598"  (2 holes)
+    T8  2.500mm  0.0984"  (4 holes)
+
+    Total plated holes count 184
+
+
+Drill file 'Home Automation Coffee Machine PRO-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0
