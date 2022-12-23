@@ -30,8 +30,8 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
 
 <br>
 
-### Status
-![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  fully working.
+### ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  Status
+Fully working.
 
 <br>
 
