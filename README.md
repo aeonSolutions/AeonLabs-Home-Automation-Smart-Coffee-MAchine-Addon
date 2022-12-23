@@ -98,7 +98,7 @@ ________________________________________________________________________________
 - LED RGB x1: https://s.click.aliexpress.com/e/_AccXHT
 - RFID RC522 x1 (optional) : https://s.click.aliexpress.com/e/_Am0LAH
 
-**to get the complete Part list in a BOM file, consider supporting this repostitory by maing a small donation. Links on the side and at the top. Thank you** 
+**to get the complete Part list in a BOM file, consider supporting this repostitory by making a small donation. Links on the side and at the top. Thank you** 
 
 <br>
 
