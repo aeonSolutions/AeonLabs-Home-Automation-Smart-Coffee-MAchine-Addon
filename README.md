@@ -1,8 +1,5 @@
 # AeonLabs Home Automation Smart Coffee Machine Addon
-This repo contains the KiCad files for the AeonLabs Home Automation Smart Coffee Machine Addon. Easy installation on any home or office coffee machine.  
-There are 2 imporved versions of this PCB with better components and without any PCB modules. Go to the private subscription based repository to get them.
-
-This is a PCB for Home Automation Smart Coffee Machine Addon. The PCB uses a ESP32-WROOM32 packed with Bluetooth, BLE and WiFi ready to be programmed for Home Assistant ! Get the PCB schematics on the GitHub repository below.  
+This repo contains the Gerber files for the Home Automation Smart Coffee Machine Addon. Easy installation on any home or office coffee machine. The PCB uses a ESP32 S3 packed with Bluetooth, BLE and WiFi ready to be programmed for Home Assistant ! 
 
 This Addon Enables any vintage coffee machine to be connected to the internet (or only to a personal network). Can connect with any Computer, Mobile App or Home Assistant (home automaton).
 
@@ -34,19 +31,15 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
 ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  fully working.
 
 ## Revisions
-- revision 3.x
+- revision 01-2023
+  - Copper track corrections
+  - Compatible with 0V to 5V External Coffee Machine sensors
   - Mobile App to control de coffee Machine over the network
   - Linux, Mac, Windows App to control de coffee Machine over the network
-- revision 2.5
-   - new , more powerful 3.3V DC converter
-- revision 2.x
-  - improved Relay connectivity/ operation
-  - Added connector for water level detection; 
-  - small pcb component reaarangement and silkscreen; 
-  - added MCU firmware download connection 
+
 
 ## Download options
-Download this repository if you need the KiCad Files or, Download the Gerber files in the release section of this repository
+Download the Gerber files located in the forlder "Gerber"  of this repository
 
 ## Liked it ? Get a Free PCB for yourself
 Send me your Device or hardware and i will design a custom PCB for it. Free of charge. Contact-me on WhatsApp or email for more info. 
