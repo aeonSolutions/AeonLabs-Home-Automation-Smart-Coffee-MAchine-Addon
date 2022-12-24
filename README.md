@@ -33,6 +33,8 @@ Great to do a restoration with this smart PCB add-on on any vintage coffee machi
 ### ![](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/working_green.png)  Status
 Fully working.
 
+I've contacted Signal ([www.signal.org](http://www.signal.org)) and Mesibo (]https://mesibo.com/[(https://mesibo.com/)) App Developers and inquired them with the possibility of this open hardware smart coffee machine pcb add-on be integrated in their messager apps so anyone can order a cup of coffee during a messenger conversation / chat and also during a conference meeting. Stay tuned for updates. 
+
 <br>
 
 ## Revisions
