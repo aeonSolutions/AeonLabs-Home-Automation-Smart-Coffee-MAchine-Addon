@@ -39,6 +39,7 @@ I've contacted Signal ([www.signal.org](http://www.signal.org)) and Mesibo ([htt
 
 ## Revisions
 - revision 01-2023
+  - upgrade to USB-C connector
   - Copper track corrections
   - Compatible with 0V to 5V External Coffee Machine sensors
   - Mobile App to control de coffee Machine over the network
