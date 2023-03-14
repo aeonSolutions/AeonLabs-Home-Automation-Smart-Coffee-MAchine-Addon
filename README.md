@@ -29,7 +29,6 @@ Functionalities available:
 * Magnetic Buzzer;
   
 
-
 To all those looking for a LCD touch solutions, this PCB features a connection to NEXTION LCD panels so one car order a cup of coffee using the LCD Touch. 
 
 * This PCB can be powered using 220V AC or regular 5V DC. 
@@ -91,10 +90,8 @@ Send me your Device or hardware and i will design a custom PCB for it. Free of c
 
 <p align+"center">
 <a href="https://www.youtube.com/watch?v=GAxtMLHbr0I">
-   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/ad.png"  width="350" />
+   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/ad.png"  width="450" />
  </a>
-<br>
-
 </p>
 
 <br>
@@ -108,7 +105,11 @@ If you have any Questions or simply  like this kind of projects and want to stay
 ## Buy a fully assembled PCB
 Alternatively, and if you do not want to build a PCB by yourself and like to buy one, you can do it here:
 
-[![](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/tindie_sell.png)](https://www.tindie.com/stores/aeonlabs/)
+<p align+"center">
+<a href="https://www.tindie.com/stores/aeonlabs/">
+   <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/tindie_sell.png"  width="450" />
+</a>
+ </p>
 
 The price will be around 30eur plus postage fees.
 (I will also deliver the assembled PCB with all the components in place at a fair aditonal cost).
@@ -118,8 +119,8 @@ The price will be around 30eur plus postage fees.
 #### Be supportive of my dedication and work towards technology education and buy me a coffee. Link below.
 
 <p align+"center">
-   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_front.jpg"  width="350" />
-   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_back.png"  width="350" />
+   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_front.jpg"  width="450" />
+   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/pcb_back.png"  width="450" />
 </p>
 
 <br>
@@ -129,7 +130,7 @@ The price will be around 30eur plus postage fees.
 Don't forget to checkout some cool photos of assembly on a Philips Senseo Coffee Machine [here](https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/tree/main/Philips%20Senseo)
 
 <p align+"center">
-   <img src="ttps://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/Philips%20Senseo/20220604_134341.jpg"  width="350" />
+   <img src="ttps://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/Philips%20Senseo/20220604_134341.jpg"  width="450" />
 </p>
 
 ________________________________________________________________________________________________________________
