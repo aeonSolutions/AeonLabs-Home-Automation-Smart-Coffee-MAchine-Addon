@@ -90,7 +90,7 @@ Send me your Device or hardware and i will design a custom PCB for it. Free of c
 
 <p align+"center">
 <a href="https://www.youtube.com/watch?v=GAxtMLHbr0I">
-   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/ad.png"  width="450" />
+   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/designs/ad.png"  width="150" />
  </a>
 </p>
 
