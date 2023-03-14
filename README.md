@@ -161,5 +161,11 @@ if you like to own a copy of this work, you can buy it as a NFT or Ethereum. con
 
 ### Be supportive of my dedication and work towards technology education and buy me a coffee
 
-[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" data-canonical-src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="70" />](https://www.buymeacoffee.com/migueltomas)
+<p align+"left">
+<a href="https://www.buymeacoffee.com/migueltomas">
+   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" data-canonical-src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="35" />
+ </a>
+<br>
+<img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/Designs/bmc_qr.png" height="130">
+</p>
 
