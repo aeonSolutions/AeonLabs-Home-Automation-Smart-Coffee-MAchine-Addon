@@ -14,11 +14,16 @@
 
 
 # AeonLabs Home Automation Smart Coffee Machine Addon
-This repo contains the Gerber files for the Home Automation Smart Coffee Machine Addon. Easy installation on any home or office coffee machine. The PCB uses a ESP32 S3 packed with Bluetooth, BLE and WiFi ready to be programmed for Home Assistant ! 
 
-This Addon Enables any vintage coffee machine to be connected to the internet (or only to a personal network). Can connect with any Computer, Mobile App or Home Assistant (home automaton).
+### The Problem
+Nowadays there are countless coffee machines however with limited to no smart functionality. With this new way of do work remotely buying a cup of coffee for a colleague, friend or family is not possible.  
 
-Functionalities available: 
+### The idea
+This Home Automation Smart Coffee Machine Addon is easy installation on any home or office coffee machine, to enable any vintage coffee machine connectivity to the internet (or a personal network). The PCB uses an ESP32 S3 packed with Bluetooth, BLE, and WiFi compatible with major software vendors such as Apple Home, Google Home, Matter/Zigbee, Home Assistant, and many others.  
+
+The custom firmware being coded includes the functionality of someone paying for a cup of coffee using any home banking App, Paypal, Stripe on any other means of payment. In return, it sends a receipt as proof a coffee was indeed brewed on the coffee machine. 
+
+**Functionalities available:** 
 
 * Control water temperature;
 * Low water detection in the water tank; 
