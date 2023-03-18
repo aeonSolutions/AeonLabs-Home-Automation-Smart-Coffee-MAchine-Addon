@@ -16,7 +16,7 @@
 # AeonLabs Home Automation Smart Coffee Machine Addon
 
 ### The Problem
-Nowadays there are countless coffee machines however with limited to no smart functionality. With this new way of do work remotely buying a cup of coffee for a colleague, friend or family is not possible.  
+Nowadays there are countless coffee machines however with limited to none smart functionality. With this new way of do work remotely buying a cup of coffee for a colleague, friend or family is not possible.  
 
 ### The idea
 This Home Automation Smart Coffee Machine Addon is easy installation on any home or office coffee machine, to enable any vintage coffee machine connectivity to the internet (or a personal network). The PCB uses an ESP32 S3 packed with Bluetooth, BLE, and WiFi compatible with major software vendors such as Apple Home, Google Home, Matter/Zigbee, Home Assistant, and many others.  
