@@ -1,3 +1,7 @@
+[PCB-Prototyping-Catalogue](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue)  >>  [Home-Automation](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation)  >>  [Smart Home Appliances](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation/Smart%20Home%20Appliances)  >>  [Kitchen](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation/Smart%20Home%20Appliances/kitchen)  >>  Smart Coffee Machine
+
+<br>
+
 [![Telegram](https://img.shields.io/badge/join-telegram-blue.svg?style=for-the-badge)](https://t.me/+W4rVVa0_VLEzYmI0)
  [![WhatsApp](https://img.shields.io/badge/join-whatsapp-green.svg?style=for-the-badge)](https://chat.whatsapp.com/FkNC7u83kuy2QRA5sqjBVg) 
  [![Donate](https://img.shields.io/badge/donate-$-brown.svg?style=for-the-badge)](http://paypal.me/mtpsilva)
@@ -6,8 +10,6 @@
 <a href="https://trackgit.com">
 <img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/lc1vqz77ghrxmk6xs5il" alt="trackgit-views" />
 </a>
-
-
 ![](https://views.whatilearened.today/views/github/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon.svg)
 ![](https://img.shields.io/github/downloads/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/total)
 <br />
