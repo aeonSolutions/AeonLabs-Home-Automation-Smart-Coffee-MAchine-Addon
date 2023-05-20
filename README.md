@@ -14,6 +14,9 @@
 ![](https://img.shields.io/github/downloads/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/total)
 <br />
 
+<p align="center">
+   <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/Photo%2BDec%2B11%2C%2B1%2B39%2B43%2BAM.jpg" height="300">
+</p>
 
 # AeonLabs Home Automation Smart Coffee Machine Addon
 
