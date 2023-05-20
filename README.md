@@ -18,7 +18,7 @@
    <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/Photo%2BDec%2B11%2C%2B1%2B39%2B43%2BAM.jpg" height="300">
 </p>
 
-# AeonLabs Home Automation Smart Coffee Machine Addon
+# Smart Coffee Machine Add-on
 
 ### The Problem
 Nowadays there are countless coffee machines however with limited to none smart functionality. With this new way of do work remotely buying a cup of coffee for a colleague, friend or family is not possible.  
