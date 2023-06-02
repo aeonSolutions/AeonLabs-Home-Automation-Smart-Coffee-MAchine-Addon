@@ -28,6 +28,8 @@ This Home Automation Smart Coffee Machine Addon is easy installation on any home
 
 The custom firmware being coded includes the functionality of someone paying for a cup of coffee using any home banking App, Paypal, Stripe on any other means of payment. In return, it sends a receipt as proof a coffee was indeed brewed on the coffee machine. 
 
+If you prefer, can read this project on Autodesk's Instructables.com website, [here](https://www.instructables.com/Smart-Coffee-Machine-PCB-Add-on/).
+
 **Functionalities available:** 
 
 * Control water temperature;
