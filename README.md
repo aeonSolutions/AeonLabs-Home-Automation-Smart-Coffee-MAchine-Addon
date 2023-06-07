@@ -62,6 +62,21 @@ I've contacted Signal ([www.signal.org](http://www.signal.org)) and Mesibo ([htt
 
 <br>
 
+## Try it right now on Telegram 
+
+Is now #official. Anyone can "buy me a coffee" on Telegram. Just start a conversation with **MiguelCoffeeMachineBot** [here](https://lnkd.in/ewU2S9uj) and send a message `/start` to view available commands. 
+
+
+Available commands:
+ - `/start`      : to view available commands on the Coffee Machine i have at my home
+ - `/CupCoffee`  : to "buy" Miguel a cup of Coffee
+ - `/CupTea`     : to "buy" Miguel a cup of Tea
+ - `/status`     : to view the current status of the Philips Senseo Coffee Machine
+
+Try it out is free and is #FUN. Great for a meeting or a conversation online.
+
+<br>
+
 ## Revisions
 - revision 01-2023
   - upgrade to USB-C connector
