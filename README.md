@@ -68,7 +68,7 @@ I've contacted Signal ([www.signal.org](http://www.signal.org)) and Mesibo ([htt
  
 ## Try it right now on Telegram 
 
-Is now #official. Anyone can "buy me a coffee" on Telegram. Just start a conversation with **MiguelCoffeeMachineBot** [here](https://lnkd.in/ewU2S9uj) and send a message `/start` to view available commands. 
+Is now #official. Anyone can "buy me a coffee" on Telegram. Just start a conversation with **MiguelCoffeeMachineBot** [here](https://t.me/MiguelCoffeeMachineBot) and send a message `/start` to view available commands. 
 
 
 Available commands:
