@@ -62,6 +62,10 @@ I've contacted Signal ([www.signal.org](http://www.signal.org)) and Mesibo ([htt
 
 <br>
 
+<p align="center">
+   <img src="https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/blob/main/media/image_2023-06-07_150433001.png" width="300"> 
+</p>
+ 
 ## Try it right now on Telegram 
 
 Is now #official. Anyone can "buy me a coffee" on Telegram. Just start a conversation with **MiguelCoffeeMachineBot** [here](https://lnkd.in/ewU2S9uj) and send a message `/start` to view available commands. 
