@@ -73,8 +73,8 @@ Is now #official. Anyone can "buy me a coffee" on Telegram. Just start a convers
 
 Available commands:
  - `/start`      : to view available commands on the Coffee Machine i have at my home
- - `/CupCoffee`  : to "buy" Miguel a cup of Coffee
- - `/CupTea`     : to "buy" Miguel a cup of Tea
+ - `/coffee`  : to "buy" Miguel a cup of Coffee
+ - `/tea`     : to "buy" Miguel a cup of Tea
  - `/cappuccino` : to buy a cup of Cappuccino
  - `/decaf`      : to buy a cup of decaf. coffee
  - `/status`     : to view the current status of the Philips Senseo Coffee Machine
