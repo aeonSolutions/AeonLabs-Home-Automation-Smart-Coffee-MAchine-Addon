@@ -350,9 +350,9 @@ void setup() {
   interface->onBoardLED->statusLED(100, 0);
   
   //init Telegram
-  telegram->CHAT_ID = "1435561519";
+  telegram->CHAT_ID = "xxxxxxxxxxxx";
   // Initialize Telegram BOT
-  telegram->BOTtoken = "5813926838:AAFwC1cV_QghdZiVUP8lAwbg9mNvkWc27jA";  // your Bot Token (Get from Botfather)
+  telegram->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
   
   telegram->init(interface, mWifi);
   
