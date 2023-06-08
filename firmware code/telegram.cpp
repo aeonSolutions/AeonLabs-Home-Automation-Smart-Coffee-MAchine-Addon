@@ -39,9 +39,9 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 TELEGRAM_CLASS::TELEGRAM_CLASS() {
     this->lastTimeBotRan = 0;
 
-    this->CHAT_ID = "1435561519";
+    this->CHAT_ID = "xxxxxxxxxxx";
     // Initialize Telegram BOT
-    this->BOTtoken = "5813926838:AAFwC1cV_QghdZiVUP8lAwbg9mNvkWc27jA";  // your Bot Token (Get from Botfather)
+    this->BOTtoken = "xxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
 }
 
 void TELEGRAM_CLASS::init(INTERFACE_CLASS* interface, M_WIFI_CLASS* mWifi){
