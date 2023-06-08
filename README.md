@@ -83,11 +83,10 @@ Try it out is free and is #FUN. No money is asked! Great for a meeting or a co
 
 <br>
 
-## Revisions
-- revision 01-2023
-  - upgrade to USB-C connector
-  - Copper track corrections
-  - Now compatible with 0V to 5V External Coffee Machine sensors
+## OEM Firmware code
+The OEM version of the firmware code can be found on the folder **firmware code**.  It has by default OTA updates, meaning the smart coffee machine add-on device automatically updates it self when newer updated versions made available here.  
+
+This code uses my own ESP32 c++ class libraties to expedite development of code of ESP32 microcontrollers. The repository is located [here](https://github.com/aeonSolutions/aeonlabs-ESP32-C-Base-Firmware-Libraries#readme) for anyone to use.
 
 <br>
 
