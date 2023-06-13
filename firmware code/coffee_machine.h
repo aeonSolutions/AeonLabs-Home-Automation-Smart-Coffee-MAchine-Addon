@@ -33,35 +33,56 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 */
 #include "Arduino.h"
 #include "interface_class.h"
-#include "coffee_machine.h"
-#include "m_wifi.h"
-#include <UniversalTelegramBot.h>   // Universal Telegram Bot Library written by Brian Lough: https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot
-#include <WiFiClientSecure.h>
+#include "max6675.h"
+#include "src/sensors/ds18b20.h"
+#include "src/sensors/vl6180x.h"
 
-#ifndef TELEGRAM_CLASS_DEF  
-  #define TELEGRAM_CLASS_DEF
+#ifndef COFFEE_MACHINE_DEF  
+  #define COFFEE_MACHINE_DEF
   
 
-  class TELEGRAM_CLASS {
+  class COFFEE_MACHINE_CLASS {
     private:
       INTERFACE_CLASS* interface=nullptr;
-      M_WIFI_CLASS* mWifi=nullptr;
-      COFFEE_MACHINE_CLASS* coffeeMachine = nullptr;
-
+      MAX6675* boilerTemp;
+      DS18B20_SENSOR* boilerTemperature;
+      VL6180X_SENSOR* coffeeCup;
+      
     public:
-        String CHAT_ID;
-        String BOTtoken;
+        uint8_t WATER_LEVEL_IO;
 
-        WiFiClientSecure client;
-        UniversalTelegramBot* bot;
+        uint8_t COFFEE_BUTTON_IO;
+        uint8_t BOILER_BUTTON_IO;
+        uint8_t GRINDER_BUTTON_IO;
 
-        int botRequestDelay;
-        unsigned long lastTimeBotRan;
+        uint8_t BOILER_MAX_TEMP_DATA_IO;
+        uint8_t BOILER_MAX_TEMP_CS_IO;
+        uint8_t BOILER_MAX_TEMP_SK_IO;
 
-        TELEGRAM_CLASS();
-        void init(INTERFACE_CLASS* interface,  M_WIFI_CLASS* mWifi, COFFEE_MACHINE_CLASS* coffeeMachine );
-        void handleNewMessages(int numNewMessages);
-        void runTelegramBot();
-};
+        uint8_t BOILER_DS18B20_TEMP_IO;
+
+        String errMessage;
+        String coffeeMachineBrand;
+        uint8_t userCoffeeHeight;
+
+        COFFEE_MACHINE_CLASS();
+        void init(INTERFACE_CLASS* interface);
+
+        bool startCoffeeMachine();
+        bool MakeNewCoffee();
+
+        bool IsLowWaterLevel();
+
+
+        float requestWaterTemperature();
+        bool heatBoiler();
+        uint8_t getCoffeeHeight();
+        void setCoffeeHeight(uint8_t userCoffeeHeight);
+        bool checkCoffeeCupIsPlaced();
+        uint8_t readCoffeeHeight();
+
+        void ToggleCoffeeButton(int state);
+        void ToggleWaterHeaterButton(int state);
+  };
 
 #endif

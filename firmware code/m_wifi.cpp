@@ -39,6 +39,7 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 #include "Config.h"
 #include "m_file_functions.h"
 #include "github_cert.h"
+#include "esp_wifi.h"
 
 #ifndef ESP32PING_H
   #include <ESP32Ping.h>
@@ -87,7 +88,7 @@ void M_WIFI_CLASS::settings_defaults(){
   this->config.DEVICE_BLE_NAME="AeonHome 12A";
   this->forceFirmwareUpdate=false;
   
-  this->clear_wifi_networks();
+  this->clear_wifi_networks(false);
   
    this->interface->mserial->printStrln("wifi settings defaults loaded.");
 }
@@ -114,6 +115,10 @@ bool M_WIFI_CLASS::start(uint32_t  connectionTimeout, uint8_t numberAttempts){
 
   if ( this->interface->CURRENT_CLOCK_FREQUENCY < this->interface->WIFI_FREQUENCY )
     this->resumeWifiMode();
+  delay(500);
+  WiFi.disconnect(true);
+  WiFi.mode(WIFI_STA);
+  delay(500);
 
   for(uint8_t i=0; i < 5; i++){
     if (this->config.ssid[i] !="")
@@ -123,8 +128,6 @@ bool M_WIFI_CLASS::start(uint32_t  connectionTimeout, uint8_t numberAttempts){
   interface->onBoardLED->led[0] = interface->onBoardLED->LED_BLUE;
   interface->onBoardLED->statusLED(100, 1);
 
-  WiFi.mode(WIFI_STA);
-  
   this->connect2WIFInetowrk(numberAttempts);
   this->lastTimeWifiConnectAttempt=millis();
   return true;
@@ -164,7 +167,6 @@ bool M_WIFI_CLASS::connect2WIFInetowrk(uint8_t numberAttempts){
     return false;
   }
   
-  //WiFi.disconnect(true);
  
   int WiFi_prev_state=-10;
   int cnt = 0;        
@@ -192,7 +194,7 @@ bool M_WIFI_CLASS::connect2WIFInetowrk(uint8_t numberAttempts){
     }
     
     cnt++;
-    if (cnt == numberAttempts &&   this->checkErrorMessageTimeLimit() ){ //1 min
+    if (cnt == numberAttempts ){ 
         this->interface->mserial->printStr( "." );
         this->interface->mserial->printStrln("\nCould not connect to a WIFI network after " + String(numberAttempts) + " attempts\n");
         this->WIFIconnected=false;
@@ -204,13 +206,14 @@ bool M_WIFI_CLASS::connect2WIFInetowrk(uint8_t numberAttempts){
 }
 // ****************************************************
 
-void M_WIFI_CLASS::clear_wifi_networks(){
+void M_WIFI_CLASS::clear_wifi_networks(bool saveSettings){
   for(int i=0; i<5 ; i++){
     this->config.ssid[i] = "";
     this->config.password[i] = "";
   }
   this->number_WIFI_networks=0;
-  this->saveSettings();
+  if (saveSettings)
+    this->saveSettings();
 }
 // ****************************************************
 

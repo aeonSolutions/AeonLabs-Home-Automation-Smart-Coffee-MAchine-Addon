@@ -149,7 +149,7 @@ uint8_t RSSIToPercent(long rssi);
 void startAP();
 
 bool add_wifi_network( String ssid, String password);
-void clear_wifi_networks();
+void clear_wifi_networks(bool saveSettings= true);
 int getNumberWIFIconfigured();
 void setNumberWIFIconfigured(uint8_t num);
 

@@ -38,8 +38,8 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 #include "m_math.h"
 
 ONBOARD_SENSORS::ONBOARD_SENSORS(){
-    this->NUMBER_OF_ONBOARD_SENSORS=0;
-    this->AHT20_ADDRESS = 0x38;
+  this->NUMBER_OF_ONBOARD_SENSORS=0;
+  this->HT_SENSOR_ADDRESS = 0x38;
 }
 
 void ONBOARD_SENSORS::init(INTERFACE_CLASS* interface, mSerial* mserial){
@@ -57,9 +57,9 @@ void ONBOARD_SENSORS::init(INTERFACE_CLASS* interface, mSerial* mserial){
     this->i2c_err_t[7]="I2C_ERROR_CONTINUE";// 7
     this->i2c_err_t[8]="I2C_ERROR_NO_BEGIN"; // 8
 
-    this->aht20 = new AHT20_SENSOR();
-    this->aht20->init(this->interface, this->AHT20_ADDRESS);
-    this->aht20->startAHT();
+    this->onboardTHsensor = new SHT3X_SENSOR();
+    this->onboardTHsensor->init(this->interface, this->HT_SENSOR_ADDRESS);
+    this->onboardTHsensor->startSHT3X();
 
     this->startLSM6DS3();
     this->prevReadings[0] = 0.0;
@@ -78,10 +78,10 @@ void ONBOARD_SENSORS::init(INTERFACE_CLASS* interface, mSerial* mserial){
 
 // ***************************************************************
 void ONBOARD_SENSORS::request_onBoard_Sensor_Measurements(){
-    this->aht20->requestMeasurements();
+    this->onboardTHsensor->requestMeasurements();
 
-    this->aht_temp = aht20->measurement[0];
-    this->aht_humidity = aht20->measurement[1];
+    this->ONBOARD_TEMP = onboardTHsensor->measurement[0];
+    this->ONBOARD_HUMIDITY = onboardTHsensor->measurement[1];
 
     getLSM6DS3sensorData();
 }
@@ -306,12 +306,12 @@ bool ONBOARD_SENSORS::gbrl_commands(String $BLE_CMD, uint8_t sendTo){
       return this->helpCommands(sendTo);
   } else if($BLE_CMD=="$ot"){
     this->request_onBoard_Sensor_Measurements();
-    dataStr=String("Current onboard Temperature is: ") + String(roundFloat(this->aht_temp,2)) + String(char(176)) + String("C") +String(char(10));
+    dataStr=String("Current onboard Temperature is: ") + String(roundFloat(this->ONBOARD_TEMP,2)) + String(char(176)) + String("C") +String(char(10));
     this->interface->sendBLEstring( dataStr, sendTo); 
     return true; 
   } else if($BLE_CMD=="$oh"){
     this->request_onBoard_Sensor_Measurements();
-    dataStr=String("Current onboard Humidity is: ") + String(this->aht_humidity)+ String(" %") +String(char(10));
+    dataStr=String("Current onboard Humidity is: ") + String(this->ONBOARD_HUMIDITY)+ String(" %") +String(char(10));
     this->interface->sendBLEstring( dataStr, sendTo);  
     return true; 
   } else if($BLE_CMD=="$oa"){

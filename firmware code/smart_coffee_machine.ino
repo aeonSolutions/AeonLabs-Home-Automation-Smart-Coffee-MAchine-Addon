@@ -36,7 +36,7 @@
 
 //----------------------------------------------------------------------------------------
 // Components Testing  **************************************
-bool SCAN_I2C_BUS = false;
+bool SCAN_I2C_BUS = true;
 bool TEST_FINGERPRINT_ID_IC = false;
 
 //----------------------------------------------------------------------------------
@@ -103,6 +103,9 @@ M_WIFI_CLASS* mWifi = new M_WIFI_CLASS();
 // Certificates
 #include "github_cert.h"
 
+// Coffee Machine 
+#include "coffee_machine.h"
+COFFEE_MACHINE_CLASS* coffeeMachine = new COFFEE_MACHINE_CLASS();
 
 /********************************************************************/
 #include <BLEDevice.h>
@@ -248,9 +251,9 @@ void setup() {
 
   // ________________ Onboard LED  _____________
   interface->onBoardLED = new ONBOARD_LED_CLASS();
-  interface->onBoardLED->LED_RED = 19;
-  interface->onBoardLED->LED_BLUE = 17;
-  interface->onBoardLED->LED_GREEN = 18;
+  interface->onBoardLED->LED_RED = 36;
+  interface->onBoardLED->LED_BLUE = 34;
+  interface->onBoardLED->LED_GREEN = 35;
 
   interface->onBoardLED->LED_RED_CH = 8;
   interface->onBoardLED->LED_BLUE_CH = 6;
@@ -262,6 +265,15 @@ void setup() {
   interface->MIN_MCU_FREQUENCY = 10;
   interface-> SERIAL_DEFAULT_SPEED = 115200;
 
+  // _____________________ coffee machine ________________________
+  /* for IO assignment edit the coffee machine class constructor */
+  
+  coffeeMachine->coffeeMachineBrand = "Philips Senseo";
+
+// _____________________ TELEGRAM _____________________________
+  telegram->CHAT_ID = "1435561519";
+  // Initialize Telegram BOT
+  telegram->BOTtoken = "5813926838:AAFwC1cV_QghdZiVUP8lAwbg9mNvkWc27jA";  // your Bot Token (Get from Botfather)
 
   // ......................................................................................................
   // .......................... END OF IO & PIN CONFIGURATION..............................................
@@ -290,8 +302,6 @@ void setup() {
 
   // init onboard sensors ___________________________
   onBoardSensors->init(interface, mserial);
-  onBoardSensors->initRollTheshold();
-
 
   if (SCAN_I2C_BUS) {
     onBoardSensors->I2Cscanner();
@@ -336,8 +346,10 @@ void setup() {
 
   //init wifi
   mWifi->init(interface, drive, interface->onBoardLED);
-  mWifi->OTA_FIRMWARE_SERVER_URL = "https://github.com/aeonSolutions/openScience-Smart-DAQ-to-Upload-Live-Experimental-Data-to-a-Data-Repository/releases/download/openFirmware/firmware.bin";
+  mWifi->OTA_FIRMWARE_SERVER_URL = "https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/releases/download/openFirmware/firmware.bin";
+  
   mWifi->add_wifi_network("TheScientist", "angelaalmeidasantossilva");
+  
   mWifi->ALWAYS_ON_WIFI=true;
   mWifi->WIFIscanNetworks();
   
@@ -349,12 +361,11 @@ void setup() {
   interface->onBoardLED->led[0] = interface->onBoardLED->LED_RED;
   interface->onBoardLED->statusLED(100, 0);
   
-  //init Telegram
-  telegram->CHAT_ID = "xxxxxxxxxxxx";
-  // Initialize Telegram BOT
-  telegram->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
+  // initialize the coffee machine
+  coffeeMachine->init(interface);
   
-  telegram->init(interface, mWifi);
+  // initialize Telegram
+  telegram->init(interface, mWifi, coffeeMachine);
   
   //Init GBRL
   gbrl.init(interface, mWifi);
@@ -475,9 +486,13 @@ void loop2 (void* pvParameters) {
 
 //************************** == Core 2: Connectivity WIFI & BLE == ***********************************************************
 void loop(){  
-  if (millis() - beacon > 60000) {    
+  if (millis() - beacon > 1000) {    
     beacon = millis();
     mserial->printStrln("(" + String(beacon) + ") Free memory: " + addThousandSeparators( std::string( String(esp_get_free_heap_size() ).c_str() ) ) + " bytes\n", mSerial::DEBUG_TYPE_VERBOSE, mSerial::DEBUG_ALL_USB_UART_BLE);
+    mserial->printStrln("Is Low water level");
+    coffeeMachine->IsLowWaterLevel();
+    //mserial->printStrln("Boiler temp: " + String( coffeeMachine->requestWaterTemperature() ) );
+
   }
 
   if ( (millis() - statusTime > 10000)) { //10 sec

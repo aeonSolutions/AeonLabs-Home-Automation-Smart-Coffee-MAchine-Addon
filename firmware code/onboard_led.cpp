@@ -107,7 +107,7 @@ void ONBOARD_LED_CLASS::statusLED(  uint8_t brightness, float time) {
       pinMode(this->LED_BLUE,OUTPUT);
       ledcAttachPin(this->LED_BLUE, this->LED_BLUE_CH);
       if (hasRed)
-        bright = floor(255-((brightness*0.7)/100*255));
+        bright = floor(255-((brightness*0.6)/100*255));
         
       ledcWrite(ch, bright);
     }

@@ -36,7 +36,8 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 #include "mserial.h"
 #include "interface_class.h"
 #include <Wire.h>
-#include "src/sensors/aht20.h"
+//#include "src/sensors/aht20.h"
+#include "src/sensors/sht3x.h"
 
 #ifndef ONBOARD_SENSORS_DEF
   #define ONBOARD_SENSORS_DEF
@@ -50,10 +51,11 @@ class ONBOARD_SENSORS {
 
     //AHT20 sensor  **********************************
     bool AHTsensorAvail;
-    float aht_temp, aht_humidity;
-    uint8_t AHT20_ADDRESS;
+    float ONBOARD_TEMP, ONBOARD_HUMIDITY;
+    uint8_t HT_SENSOR_ADDRESS;
     
-    AHT20_SENSOR* aht20;
+    //AHT20_SENSOR* onboardTHsensor;
+    SHT3X_SENSOR* onboardTHsensor;
 
     // LSM6DS3 motion sensor  ******************************
     uint8_t LSM6DS3_ADDRESS= 0x6B; // default address is 0x6B
@@ -69,11 +71,11 @@ class ONBOARD_SENSORS {
     uint8_t numtimesBeforeDetectMotion;
     uint8_t numtimesMotionDetected;
 
-     uint8_t NUMBER_OF_ONBOARD_SENSORS;
+    uint8_t NUMBER_OF_ONBOARD_SENSORS;
 
     // I2C scanner  ************************************
     // see https://stackoverflow.com/questions/52221727/arduino-wire-library-returning-error-code-7-which-is-not-defined-in-the-library
-      char*i2c_err_t[9];
+    char*i2c_err_t[9];
 
     ONBOARD_SENSORS();
     void I2Cscanner();

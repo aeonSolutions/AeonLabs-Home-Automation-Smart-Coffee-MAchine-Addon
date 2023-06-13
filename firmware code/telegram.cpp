@@ -41,13 +41,14 @@ TELEGRAM_CLASS::TELEGRAM_CLASS() {
 
     this->CHAT_ID = "xxxxxxxxxxx";
     // Initialize Telegram BOT
-    this->BOTtoken = "xxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
+    this->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
 }
 
-void TELEGRAM_CLASS::init(INTERFACE_CLASS* interface, M_WIFI_CLASS* mWifi){
+void TELEGRAM_CLASS::init(INTERFACE_CLASS* interface, M_WIFI_CLASS* mWifi, COFFEE_MACHINE_CLASS* coffeeMachine ){
   this->interface=interface;
   this->interface->mserial->printStr("\ninit Telegram ...");
   this->mWifi= mWifi;
+  this->coffeeMachine = coffeeMachine;
   
   this->botRequestDelay = 1000;
 
@@ -120,23 +121,32 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
     }
     
     if (text == "/cappuccino") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of cappuccino request to Miguel's Philips Senseo Coffee Machine", "");
+      this->bot->sendMessage(chat_id, "You just sent a cup of cappuccino request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
     }
     
     if (text == "/decaf") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of decaf. coffee request to Miguel's Philips Senseo Coffee Machine", "");
+      this->bot->sendMessage(chat_id, "You just sent a cup of decaf. coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
     }
     
     if (text == "/coffee") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of coffee request to Miguel's Philips Senseo Coffee Machine", "");
+      this->bot->sendMessage(chat_id, "You just sent a cup of coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      
+      if( false == this->coffeeMachine->startCoffeeMachine() ) {
+        this->bot->sendMessage(chat_id, this->coffeeMachine->errMessage, "");        
+      }else{
+        this->bot->sendMessage(chat_id, "Miguel accepted your offer. \n Making a cup of Coffee...one moment", "");
+        if (false == this->coffeeMachine->MakeNewCoffee() ){
+          this->bot->sendMessage(chat_id, this->coffeeMachine->errMessage, "");
+        }
+      }
     }
     
     if (text == "/tea") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of tea request to Miguel's Philips Senseo Coffee Machine", "");
+      this->bot->sendMessage(chat_id, "You just sent a cup of tea request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
     }
     
     if (text == "/state") {
-        this->bot->sendMessage(chat_id, "I'm an old Philips Senseo Coffee Machine. ", "");
+        this->bot->sendMessage(chat_id, "I'm an old " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine. ", "");
     }
   }
 }
