@@ -40,6 +40,7 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 #include "lang_base.h"
 #include "lang_12daq.h"
 
+
 INTERFACE_CLASS::INTERFACE_CLASS(){
   this->firmware_version="-.-.-";
   
@@ -51,8 +52,8 @@ INTERFACE_CLASS::INTERFACE_CLASS(){
   this->SERIAL_DEFAULT_SPEED = 115200;
 
     // I2C IOs  __________________________
-  this->I2C_SDA_IO_PIN = 8;
-  this->I2C_SCL_IO_PIN = 9;
+  this->I2C_SDA_IO_PIN = 9;
+  this->I2C_SCL_IO_PIN = 8;
   
   // Power Saving ____________________________________
   this->LIGHT_SLEEP_EN=false;
@@ -70,6 +71,9 @@ void INTERFACE_CLASS::init( mSerial* mserial, bool DEBUG_ENABLE) {
   this->BL = Pangodream_18650_CL( this->BATTERY_ADC_IO, 1.7, 20);
 
   this->loadDefaultLanguagePack( );
+
+  Wire.begin(this->I2C_SDA_IO_PIN, this->I2C_SCL_IO_PIN);
+  this->wirePort = &Wire;
 
   this->mserial->printStrln ("Firmware Build: " + String(__DATE__ ) + " " + String(__TIME__) + " version: " + this->firmware_version + "\n");
   //this->rtc.setTime(1609459200);  // 1st Jan 2021 00:00:00

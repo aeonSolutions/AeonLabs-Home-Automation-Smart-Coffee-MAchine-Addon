@@ -59,13 +59,13 @@ void TELEGRAM_CLASS::init(INTERFACE_CLASS* interface, M_WIFI_CLASS* mWifi, COFFE
 }
 // ************************************************************
 void TELEGRAM_CLASS::runTelegramBot(){
-    mWifi->start(10000,5);
 
     if (millis() > this->lastTimeBotRan + this->botRequestDelay)  {
+        mWifi->start(10000,5);
+
         int numNewMessages = this->bot->getUpdates(this->bot->last_message_received + 1);
 
         while(numNewMessages) {
-            Serial.print("Request received: ");
             this->handleNewMessages(numNewMessages);
             numNewMessages = this->bot->getUpdates(this->bot->last_message_received + 1);
         }
@@ -88,7 +88,7 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
     
     // Print the received message
     String text = this->bot->messages[i].text;
-    this->interface->mserial->printStrln(text);
+    this->interface->mserial->printStrln("Request received: " + text);
 
     String from_name = this->bot->messages[i].from_name;
 

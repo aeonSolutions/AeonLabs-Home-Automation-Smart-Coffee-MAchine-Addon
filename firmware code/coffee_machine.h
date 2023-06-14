@@ -64,22 +64,30 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
         String errMessage;
         String coffeeMachineBrand;
         uint8_t userCoffeeHeight;
+        uint8_t coffeeCupHeight;
 
         COFFEE_MACHINE_CLASS();
         void init(INTERFACE_CLASS* interface);
 
         bool startCoffeeMachine();
+        bool startCupFill(String what);
+
         bool MakeNewCoffee();
+        bool MakeNewDecaf();
+        bool MakeNewCappuccino();
+        bool MakeNewTea();
 
         bool IsLowWaterLevel();
 
-
         float requestWaterTemperature();
         bool heatBoiler();
-        uint8_t getCoffeeHeight();
-        void setCoffeeHeight(uint8_t userCoffeeHeight);
+        
+        uint8_t getUserCoffeeHeight();
+        void setUserCoffeeHeight(uint8_t userCoffeeHeight);
+        
         bool checkCoffeeCupIsPlaced();
         uint8_t readCoffeeHeight();
+        void setCoffeeCupHeight();
 
         void ToggleCoffeeButton(int state);
         void ToggleWaterHeaterButton(int state);

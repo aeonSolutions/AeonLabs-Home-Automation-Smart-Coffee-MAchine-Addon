@@ -37,7 +37,9 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 
 
 COFFEE_MACHINE_CLASS::COFFEE_MACHINE_CLASS() {
-    this->errMessage="";
+    this->errMessage = "";
+    this->userCoffeeHeight = 0;
+    this->coffeeCupHeight = 0;
 
     this->WATER_LEVEL_IO =14;
 
@@ -117,25 +119,39 @@ bool COFFEE_MACHINE_CLASS::heatBoiler(){
 
 // *********************************************
 uint8_t COFFEE_MACHINE_CLASS::readCoffeeHeight(){
-  this->coffeeCup->requestMeasurements();
-  return this->coffeeCup->measurement[1];
+  uint8_t maxi= 0;
+  for(int i=0; i <20; i++ ){
+    this->coffeeCup->requestMeasurements();
+    delay(100);
+    if (this->coffeeCup->measurement[1] > maxi)
+      maxi=this->coffeeCup->measurement[1];
+  }
+
+  return maxi;
 }
 
 // ************************************************************
-uint8_t COFFEE_MACHINE_CLASS::getCoffeeHeight(){
+uint8_t COFFEE_MACHINE_CLASS::getUserCoffeeHeight(){
   return this->userCoffeeHeight;
 }
 
 // ************************************************************
-void COFFEE_MACHINE_CLASS::setCoffeeHeight(uint8_t userCoffeeHeight){
+void COFFEE_MACHINE_CLASS::setUserCoffeeHeight(uint8_t userCoffeeHeight){
   this->userCoffeeHeight = userCoffeeHeight;
 }
 
 // ************************************************************
 bool COFFEE_MACHINE_CLASS::checkCoffeeCupIsPlaced(){
-  // ToDo
+  if ( this->readCoffeeHeight() >93 )
+    return false;
+
   return true;
 }
+
+// ********************************************************
+void COFFEE_MACHINE_CLASS::setCoffeeCupHeight(){
+  this->coffeeCupHeight = this->readCoffeeHeight();
+};
 
 // ************************************************************
 bool COFFEE_MACHINE_CLASS::startCoffeeMachine(){
@@ -154,12 +170,12 @@ bool COFFEE_MACHINE_CLASS::startCoffeeMachine(){
   
   long int timeout = millis();
 
-  while( this->requestWaterTemperature() < 40.0 && ( millis()-timeout < 120000 ) ){ // 2min
+  while( this->requestWaterTemperature() < 40.0 && ( millis()-timeout < 60000 ) ){ // 2min
       this->interface->mserial->printStrln( "Boiler Temp: " + String(this->requestWaterTemperature()) + "*C" );
       delay(2000);
   }
   this->ToggleWaterHeaterButton(HIGH);
-  if (this->requestWaterTemperature() < 40.0 && ( millis()-timeout >= 120000 ) ){
+  if (this->requestWaterTemperature() < 40.0 && ( millis()-timeout >= 60000 ) ){
     this->errMessage = "The Coffee Machine boiler is not heating.";
     this->interface->mserial->printStrln( this->errMessage ); 
     //return false;
@@ -167,37 +183,67 @@ bool COFFEE_MACHINE_CLASS::startCoffeeMachine(){
 
   // check if there is a coffee cup / mug
   if ( this->checkCoffeeCupIsPlaced() == false){
-    this->errMessage = "There's no cup/mug on the machine.";
+    this->errMessage = "There's no cup/mug on the coffee machine.";
     this->interface->mserial->printStrln( this->errMessage ); 
-    //return false;
+    return false;
   }else{
-        this->interface->mserial->printStrln("found coffee /mug."); 
+        this->interface->mserial->printStrln("Dont move the cup/mug...."); 
+        this->setCoffeeCupHeight();
   }
+  return true;
+}
+// *****************************************************
+bool COFFEE_MACHINE_CLASS::startCupFill(String what){
+  this->interface->mserial->printStrln( "Making a cup of " + what + "...."); 
+
+  this->setUserCoffeeHeight(60);
+
+  this->interface->mserial->printStrln( "Making 1");
+
+  // turn on the water pump 
+  this->ToggleCoffeeButton(LOW);
+  
+  this->interface->mserial->printStrln( "Making 2");
+
+  long int timeout = millis();
+  while( this->readCoffeeHeight() < this->getUserCoffeeHeight() && ( millis()-timeout < 60000 ) ){ // 2min
+      this->interface->mserial->printStrln( what + " height is: " + String(this->readCoffeeHeight()) + "mm" );
+      delay(2000);
+  }
+
+  this->interface->mserial->printStrln( "Making 3");
+
+  this->ToggleCoffeeButton(HIGH);    
+
+  this->interface->mserial->printStrln( "Making 4");
+
+  if (this->readCoffeeHeight() < this->getUserCoffeeHeight() && ( millis()-timeout >= 60000 ) ){
+    this->errMessage = "The Coffee Machine is not working properly. Check water pump / quantity sensor";
+    this->interface->mserial->printStrln( this->errMessage ); 
+    return false;
+  }
+
+  this->interface->mserial->printStrln( what + " is ready. You can go and pick it up.");
+
   return true;
 }
 
 // *************************************************************
 bool COFFEE_MACHINE_CLASS::MakeNewCoffee(){
-  this->interface->mserial->printStrln( "Making a cup of coffee...."); 
+  return this->startCupFill("coffee");
+}
 
-// turn on the water pump 
-  this->ToggleCoffeeButton(LOW);
-  
-  long int timeout = millis();
-  while( this->readCoffeeHeight() < 40.0 && ( millis()-timeout < 120000 ) ){ // 2min
-      this->interface->mserial->printStrln( "coffee height is: " + String(this->readCoffeeHeight()) + "mm" );
-      delay(2000);
-  }
+// *************************************************************
+bool COFFEE_MACHINE_CLASS::MakeNewTea(){
+  return this->startCupFill("tea");
+}
 
-  this->ToggleWaterHeaterButton(HIGH);
-  
-  if (this->readCoffeeHeight() < 40.0 && ( millis()-timeout >= 120000 ) ){
-    this->errMessage = "The Coffee Machine cup sensor is not working.";
-    this->interface->mserial->printStrln( this->errMessage ); 
-    //return false;
-  }
+// *************************************************************
+bool COFFEE_MACHINE_CLASS::MakeNewCappuccino(){
+  return this->startCupFill("cappuccino");
+}
 
-  this->ToggleCoffeeButton(HIGH);  
-
-  return true;
+// *************************************************************
+bool COFFEE_MACHINE_CLASS::MakeNewDecaf(){
+  return this->startCupFill("decaf. coffee");
 }

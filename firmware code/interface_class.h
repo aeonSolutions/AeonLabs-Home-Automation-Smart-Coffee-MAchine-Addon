@@ -45,6 +45,7 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 #include <ArduinoJson.h>
 #include <HardwareSerial.h>
 #include <semphr.h>
+#include "Wire.h"
 
 #ifndef INTERFACE_CLASS_DEF
   #define INTERFACE_CLASS_DEF
@@ -165,6 +166,7 @@ class INTERFACE_CLASS {
     mSerial* mserial;
     ONBOARD_LED_CLASS* onBoardLED;
     HardwareSerial* UARTserial;
+    TwoWire* wirePort;
 
     void init(mSerial* mserial, bool DEBUG_ENABLE);
     void init_BLE(BLECharacteristic *pCharacteristicTX);
