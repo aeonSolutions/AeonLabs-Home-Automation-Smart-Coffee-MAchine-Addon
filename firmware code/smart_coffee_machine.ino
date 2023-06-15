@@ -270,9 +270,9 @@ void setup() {
   coffeeMachine->coffeeMachineBrand = "Philips Senseo";
 
 // _____________________ TELEGRAM _____________________________
-  telegram->OWNER_CHAT_ID = "1435561519";
+  telegram->OWNER_CHAT_ID = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
   // Initialize Telegram BOT
-  telegram->BOTtoken = "5813926838:AAFwC1cV_QghdZiVUP8lAwbg9mNvkWc27jA";  // your Bot Token (Get from Botfather)
+  telegram->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
 
   // ......................................................................................................
   // .......................... END OF IO & PIN CONFIGURATION..............................................
@@ -345,9 +345,7 @@ void setup() {
   //init wifi
   mWifi->init(interface, drive, interface->onBoardLED);
   mWifi->OTA_FIRMWARE_SERVER_URL = "https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/releases/download/openFirmware/firmware.bin";
-  
-  mWifi->add_wifi_network("TheScientist", "angelaalmeidasantossilva");
-  
+    
   mWifi->ALWAYS_ON_WIFI=true;
   mWifi->WIFIscanNetworks();
   
