@@ -50,6 +50,21 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
       VL6180X_SENSOR* coffeeCup;
       
     public:
+      typedef struct{
+        uint8_t maxCoffeeCupsPerDay;
+        uint8_t maxTeaCupsPerDay;
+
+        uint8_t userCoffeeHeight;
+        
+        int dayOfMonth;
+        uint8_t numTeaCupsToday;
+        uint8_t numCoffeeCupsToday;
+
+      } config_strut;
+
+      config_strut config;
+
+    
         uint8_t WATER_LEVEL_IO;
 
         uint8_t COFFEE_BUTTON_IO;
@@ -64,11 +79,15 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 
         String errMessage;
         String coffeeMachineBrand;
-        uint8_t userCoffeeHeight;
+
         uint8_t coffeeCupHeight;
+
+
 
         COFFEE_MACHINE_CLASS();
         void init(INTERFACE_CLASS* interface);
+        void settings_defaults();
+        bool saveSettings();
 
         bool startCoffeeMachine();
         bool startCupFill(String what);
@@ -86,6 +105,9 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
         uint8_t getUserCoffeeHeight();
         void setUserCoffeeHeight(uint8_t userCoffeeHeight);
         
+        uint8_t updateNumTeaCupsToday();
+        uint8_t updateNumCoffeeCupsToday();
+
         bool checkCoffeeCupIsPlaced();
         uint8_t readCoffeeHeight();
         void setCoffeeCupHeight();

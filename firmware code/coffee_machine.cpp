@@ -38,7 +38,7 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 
 COFFEE_MACHINE_CLASS::COFFEE_MACHINE_CLASS() {
     this->errMessage = "";
-    this->userCoffeeHeight = 0;
+
     this->coffeeCupHeight = 0;
 
     this->WATER_LEVEL_IO =14;
@@ -77,9 +77,24 @@ void COFFEE_MACHINE_CLASS::init(INTERFACE_CLASS* interface){
   this->coffeeCup->init(this->interface);
   this->coffeeCup->startVL6180X();
 
+  this->settings_defaults();
   this->interface->mserial->printStrln("===============   init done =============================");
 }
 
+// **********************************************
+void COFFEE_MACHINE_CLASS::settings_defaults(){
+  this->config.maxCoffeeCupsPerDay = 3 ;
+  this->config.maxTeaCupsPerDay = 3;
+  
+  this->config.numTeaCupsToday = 0;
+  this->config.numCoffeeCupsToday = 0;
+
+  this->config.userCoffeeHeight = 0;
+  
+  this->config.dayOfMonth = this->interface->rtc.getDay();
+
+  this->interface->mserial->printStrln("settings defaults loaded.");
+}
 // **************************************************
 void COFFEE_MACHINE_CLASS::ToggleWaterHeaterButton(int state){
   digitalWrite( this->BOILER_BUTTON_IO,state); // disabled
@@ -103,7 +118,6 @@ bool COFFEE_MACHINE_CLASS::IsLowWaterLevel(){
   }else{
     return true; // low water level 
   }
-
 }
 
 // ************************************************************
@@ -132,12 +146,12 @@ uint8_t COFFEE_MACHINE_CLASS::readCoffeeHeight(){
 
 // ************************************************************
 uint8_t COFFEE_MACHINE_CLASS::getUserCoffeeHeight(){
-  return this->userCoffeeHeight;
+  return this->config.userCoffeeHeight;
 }
 
 // ************************************************************
 void COFFEE_MACHINE_CLASS::setUserCoffeeHeight(uint8_t userCoffeeHeight){
-  this->userCoffeeHeight = userCoffeeHeight;
+  this->config.userCoffeeHeight = userCoffeeHeight;
 }
 
 // ************************************************************
@@ -170,12 +184,12 @@ bool COFFEE_MACHINE_CLASS::startCoffeeMachine(){
   
   long int timeout = millis();
 
-  while( this->requestWaterTemperature() < 93 && ( millis()-timeout < 60000 ) ){ // 1min
+  while( this->requestWaterTemperature() < 93 && ( millis()-timeout < 10000 ) ){ // 10 sec
       this->interface->mserial->printStrln( "Boiler Temp: " + String(this->requestWaterTemperature()) + "*C" );
       delay(5000);
   }
   this->ToggleWaterHeaterButton(HIGH);
-  if (this->requestWaterTemperature() < 93 && ( millis()-timeout >= 60000 ) ){
+  if (this->requestWaterTemperature() < 93 && ( millis()-timeout >= 10000 ) ){
     this->errMessage = "The Coffee Machine boiler is not heating.";
     this->interface->mserial->printStrln( this->errMessage ); 
     //return false;
@@ -204,14 +218,14 @@ bool COFFEE_MACHINE_CLASS::startCupFill(String what){
   this->ToggleCoffeeButton(LOW);
   
   long int timeout = millis();
-  while( this->readCoffeeHeight() < this->getUserCoffeeHeight() && ( millis()-timeout < 40000 ) ){ // 2min
+  while( this->readCoffeeHeight() < this->getUserCoffeeHeight() && ( millis()-timeout < 10000 ) ){ // 10 sec
       this->interface->mserial->printStrln( what + " height is: " + String(this->readCoffeeHeight()) + "mm" );
       delay(2000);
   }
 
   this->ToggleCoffeeButton(HIGH);    
 
-  if (this->readCoffeeHeight() < this->getUserCoffeeHeight() && ( millis()-timeout >= 60000 ) ){
+  if (this->readCoffeeHeight() < this->getUserCoffeeHeight() && ( millis()-timeout >= 10000 ) ){
     this->errMessage = "The Coffee Machine is not working properly. Check water pump / quantity sensor";
     this->interface->mserial->printStrln( this->errMessage ); 
     return false;
@@ -219,5 +233,41 @@ bool COFFEE_MACHINE_CLASS::startCupFill(String what){
 
   this->interface->mserial->printStrln( what + " is ready. You can go and pick it up.");
 
+  return true;
+}
+
+
+// ********************************************************
+uint8_t COFFEE_MACHINE_CLASS::updateNumCoffeeCupsToday(){
+  if (this->interface->rtc.getDay() != this->config.dayOfMonth ){
+    this->config.numTeaCupsToday = 0;
+    this->config.numCoffeeCupsToday = 0;
+    this->config.dayOfMonth = this->interface->rtc.getDay();
+  }else{
+    this->config.numCoffeeCupsToday++;
+  }
+  
+  this->saveSettings();
+  return this->config.numCoffeeCupsToday;
+}
+
+// *********************************************************
+uint8_t COFFEE_MACHINE_CLASS::updateNumTeaCupsToday(){
+  if (this->interface->rtc.getDay() != this->config.dayOfMonth ){
+    this->config.numTeaCupsToday = 0;
+    this->config.numCoffeeCupsToday = 0;
+    this->config.dayOfMonth = this->interface->rtc.getDay();
+  }else{
+    this->config.numTeaCupsToday++;
+  }
+  
+  this->saveSettings();
+  return this->config.numTeaCupsToday;
+}
+
+
+// *****************************************************
+bool COFFEE_MACHINE_CLASS::saveSettings(){
+  
   return true;
 }

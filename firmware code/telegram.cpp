@@ -38,8 +38,15 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 
 TELEGRAM_CLASS::TELEGRAM_CLASS() {
     this->lastTimeBotRan = 0;
+    this->openOrderRequest = false;
 
-    this->CHAT_ID = "xxxxxxxxxxx";
+    this->CupOrderSize ="normal";
+
+    this->orderRequestChatID = "xxxxxxxxxx";
+    this->orderRequestType = "xxxxxxxx";
+    this->orderRequestTime = 0;
+
+    this->OWNER_CHAT_ID = "xxxxxxxxxxx";
     // Initialize Telegram BOT
     this->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
 }
@@ -57,21 +64,29 @@ void TELEGRAM_CLASS::init(INTERFACE_CLASS* interface, M_WIFI_CLASS* mWifi, COFFE
 
   this->interface->mserial->printStrln("done.");
 }
+
 // ************************************************************
 void TELEGRAM_CLASS::runTelegramBot(){
+  if (millis() > this->lastTimeBotRan + this->botRequestDelay)  {
+      mWifi->start(10000,5);
 
-    if (millis() > this->lastTimeBotRan + this->botRequestDelay)  {
-        mWifi->start(10000,5);
-
-        int numNewMessages = this->bot->getUpdates(this->bot->last_message_received + 1);
-
-        while(numNewMessages) {
-            this->handleNewMessages(numNewMessages);
-            numNewMessages = this->bot->getUpdates(this->bot->last_message_received + 1);
-        }
-        this->lastTimeBotRan = millis();
+    if ( this->openOrderRequest == true && ( millis() - this->orderRequestTime > 120000) ){ // 2 min
+      this->bot->sendMessage(this->orderRequestChatID , "Miguel did not respond to your offer 🕒. Try again later. ", "");
+      this->openOrderRequest = false;
+      this->orderRequestChatID = "0000000000";
+      this->orderRequestType = "none";
     }
+
+    int numNewMessages = this->bot->getUpdates(this->bot->last_message_received + 1);
+
+    while(numNewMessages) {
+      this->handleNewMessages(numNewMessages);
+      numNewMessages = this->bot->getUpdates(this->bot->last_message_received + 1);
+    }
+    this->lastTimeBotRan = millis();
+  }
 }
+
 // ***********************************************************************************************
 // Handle what happens when you receive new messages
 void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
@@ -81,14 +96,10 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
   for (int i=0; i<numNewMessages; i++) {
     // Chat id of the requester
     String chat_id = String(this->bot->messages[i].chat_id);
-    if (chat_id != this->CHAT_ID){
-      //this->bot->sendMessage(chat_id, "Unauthorized user", "");
-      //continue;
-    }
     
     // Print the received message
     String text = this->bot->messages[i].text;
-    this->interface->mserial->printStrln("Request received: " + text);
+    this->interface->mserial->printStrln("Request received ("+chat_id+"): " + text);
 
     String from_name = this->bot->messages[i].from_name;
 
@@ -102,11 +113,35 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       welcome += "\n";
       welcome += "/state to request current coffee machine state \n";
       welcome += "\n";
+
+      if (chat_id == this->OWNER_CHAT_ID){
+        welcome += "/accept [short/normal/long] to accept an offer made by another person\n";
+        welcome += "\n";
+      }
       welcome += "/donation to support this open project\n";
       welcome += "/projectPage to view this open project on Github";
+
       this->bot->sendMessage(chat_id, welcome, "");
     }
+    
+    if (chat_id == this->OWNER_CHAT_ID && text.indexOf("/accept")>-1 ){
+      if (this->openOrderRequest == true ){
+        this->openOrderRequest = false;
+        if (this->orderRequestType.equals("decaf") )
+          this->orderRequestType = "decaffeinated coffee";      
 
+        String value= text.substring(8, text.length());
+        if (value=="normal" || value=="long" || value=="short"){
+          this->CupOrderSize = value;
+        }else{
+          this->CupOrderSize = "normal";
+        }
+        this->makeCup(this->orderRequestChatID, this->orderRequestType);
+      }else{
+        this->bot->sendMessage(this->OWNER_CHAT_ID, "No request made for Brewing a Cup. ", "");
+      }
+    }
+    
     if (text == "/projectPage") {
       String msg ="This smart coffee machine open project is available on my github here:\n";
       msg += "https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/tree/main\n";
@@ -120,24 +155,51 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       this->bot->sendMessage(chat_id, msg, "");
     }
     
+
+    if (this->openOrderRequest==true){
+      if (this->orderRequestChatID  == chat_id){
+        this->bot->sendMessage(chat_id, "You already have a pending 🕒 request. Tell Miguel to acccept your offer or wait until he replies. Thank you. 🙏🏼", "");
+      }else{
+        this->bot->sendMessage(chat_id, "There's already a pending request 🕒 made by someone else. Try again later. Thank you. 🙏🏼", "");
+      }
+      continue;
+    }
+    // _________________________________________________________________
+
     if (text == "/cappuccino") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of cappuccino request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->makeCup(chat_id, "cappuccino");
+      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of cappuccino request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      this->checkMaxDailyCups(chat_id, from_name, "cappuccino");
+      this->openOrderRequest = true;
+      this->orderRequestChatID = chat_id;
+      this->orderRequestType = text.substring(1,text.length());
+      this->orderRequestTime=millis();
     }
     
     if (text == "/decaf") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of decaf. coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->makeCup(chat_id, "decaffeinated coffee");
+      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of decaffeinated coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      this->checkMaxDailyCups(chat_id, from_name, "decaffeinated coffee");
+      this->openOrderRequest = true;
+      this->orderRequestChatID = chat_id;
+      this->orderRequestType = text.substring(1,text.length());
+      this->orderRequestTime=millis();
     }
     
     if (text == "/coffee") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->makeCup(chat_id, "coffee");
+      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      this->checkMaxDailyCups(chat_id, from_name, "coffee");
+      this->openOrderRequest = true;
+      this->orderRequestChatID = chat_id;
+      this->orderRequestType = text.substring(1,text.length());
+      this->orderRequestTime=millis();
     }
     
     if (text == "/tea") {
-      this->bot->sendMessage(chat_id, "You just sent a cup of tea request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->makeCup(chat_id, "tea");
+      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of tea request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      this->checkMaxDailyCups(chat_id, from_name, "tea");
+      this->openOrderRequest = true;
+      this->orderRequestChatID = chat_id;
+      this->orderRequestType = text.substring(1,text.length());
+      this->orderRequestTime=millis();
     }
     
     if (text == "/state") {
@@ -152,12 +214,49 @@ bool TELEGRAM_CLASS::makeCup(String chat_id, String what){
     this->bot->sendMessage(chat_id, this->coffeeMachine->errMessage, "");  
     return false;      
   }else{
-    this->bot->sendMessage(chat_id, "Miguel accepted your offer. \n Making a cup of " + what + "...one moment", "");
+    this->bot->sendMessage(chat_id, "Miguel accepted your offer. \n Making a " + this->CupOrderSize + " cup of " + what + "...one moment 🕒", "");
     if (false == this->coffeeMachine->startCupFill(what) ){
       this->bot->sendMessage(chat_id, this->coffeeMachine->errMessage, "");
       return false;
     }
-    this->bot->sendMessage(chat_id," done. Thank you for your thoughtful offer.", "");
+    this->bot->sendMessage(chat_id," done. Thank you for your thoughtful offer 👍🏼🙏🏼.", "");
     return true;
   }
 }
+
+// ****************************************************
+bool TELEGRAM_CLASS:: checkMaxDailyCups( String chat_id, String from_name, String what ){
+  if ( what.equals("decaffeinated coffee") || what.equals("coffee") || what.equals("cappuccino") ){    
+    if( this->coffeeMachine->config.maxCoffeeCupsPerDay == ( this->coffeeMachine->config.numCoffeeCupsToday +1) ){
+      this->bot->sendMessage(chat_id, from_name +", i think this will be my last cup of " + what +" today 👌🏼...", "");  
+      this->coffeeMachine->updateNumCoffeeCupsToday();
+      return true;   
+    }else if ( (this->coffeeMachine->config.numCoffeeCupsToday+1) > this->coffeeMachine->config.maxCoffeeCupsPerDay ){
+      this->bot->sendMessage(chat_id, from_name + ", I already had too much " + what +" today 🤪 ... ", "");  
+      this->coffeeMachine->updateNumCoffeeCupsToday(); 
+      return false;   
+    }
+    
+    this->coffeeMachine->updateNumCoffeeCupsToday(); 
+    return true;
+  }
+
+  if ( what.equals("tea") ){
+    if( this->coffeeMachine->config.maxTeaCupsPerDay ==  (this->coffeeMachine->config.numTeaCupsToday +1) ){
+      this->bot->sendMessage(chat_id, from_name +", i think this will be my last cup of " + what +" today 👌🏼...", "");  
+      this->coffeeMachine->updateNumTeaCupsToday();
+      return true;   
+    }else if ( (this->coffeeMachine->config.numTeaCupsToday+1) > this->coffeeMachine->config.maxTeaCupsPerDay  ){
+      this->bot->sendMessage(chat_id, from_name + ", I already had too much " + what +" today 🤪 ... ", "");  
+      this->coffeeMachine->updateNumTeaCupsToday();
+      return false;   
+    }
+
+    this->coffeeMachine->updateNumTeaCupsToday();
+    return true;
+  }
+
+return false; 
+}
+
+// ************************************************************

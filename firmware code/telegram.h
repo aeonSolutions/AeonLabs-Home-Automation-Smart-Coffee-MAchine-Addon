@@ -49,9 +49,15 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
       COFFEE_MACHINE_CLASS* coffeeMachine = nullptr;
 
     public:
-        String CHAT_ID;
+        String OWNER_CHAT_ID;
         String BOTtoken;
 
+        bool openOrderRequest;
+        String orderRequestChatID;
+        String orderRequestType;
+        long int orderRequestTime;
+        String CupOrderSize;
+                
         WiFiClientSecure client;
         UniversalTelegramBot* bot;
 
@@ -63,6 +69,7 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
         void handleNewMessages(int numNewMessages);
         void runTelegramBot();
         bool makeCup(String chat_id, String what);
+        bool checkMaxDailyCups( String chat_id, String from_name, String what );
 };
 
 #endif
