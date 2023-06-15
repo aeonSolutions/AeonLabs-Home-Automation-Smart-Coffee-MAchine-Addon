@@ -186,8 +186,21 @@ one can use the PCB in the repository [AeonLabs-MCU-Burner-USB-to-UART-TTL](http
 ## Other similar projects
 
 - [Smart coffee machine on local network](https://github.com/cryptax/webpresso)
-- 
+
 Prodigio smart coffee machines are only accessible through Bluetooth Low Energy (BLE). This project makes it possible to access them via HTTP/HTTPS, using a RPi 3 as BLE relay.
+
+- [CoffeeMaker](https://github.com/ivanph1017/CoffeeMaker)
+
+This is part of a project to manage a coffee maker at home from a Android mobile phone. It's made up of an Android app written in Kotlin as the front-end, Firebase service as the back-end and Raspberry PI 3 as a single board computer with a script written in Javascript running on Node.JS and integrated to a coffee maker with water level sensors.
+
+The coffee maker can be turned on/off by the Android app. Nonetheless, it can only be kept turned on maximum of 1 hour. If such an amount of time has passed, it automatically turns off and it rests up by 5 minutes in order to be available of turning on again.
+
+- [Coffee Machine Project](http://simcap.github.io/coffeemachine/)
+
+In this Coffe Machine Project, your task is to implement the logic (starting from a simple class) that translates orders from customers of the coffee machine to the drink maker. Your code will use the drink maker protocol to send commands to the drink maker.
+
+
+one can find more coffee machine open projectt, [here](https://github.com/topics/coffee-machine?l=java).
 
 <br>
 
