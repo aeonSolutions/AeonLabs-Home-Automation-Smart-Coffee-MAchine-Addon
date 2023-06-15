@@ -270,9 +270,9 @@ void setup() {
   coffeeMachine->coffeeMachineBrand = "Philips Senseo";
 
 // _____________________ TELEGRAM _____________________________
-  telegram->CHAT_ID = "1435561519";
+  telegram->CHAT_ID = "xxxxxxx";
   // Initialize Telegram BOT
-  telegram->BOTtoken = "5813926838:AAFwC1cV_QghdZiVUP8lAwbg9mNvkWc27jA";  // your Bot Token (Get from Botfather)
+  telegram->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
 
   // ......................................................................................................
   // .......................... END OF IO & PIN CONFIGURATION..............................................
