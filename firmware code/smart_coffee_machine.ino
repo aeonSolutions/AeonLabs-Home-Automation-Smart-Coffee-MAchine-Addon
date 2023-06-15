@@ -346,7 +346,7 @@ void setup() {
   mWifi->init(interface, drive, interface->onBoardLED);
   mWifi->OTA_FIRMWARE_SERVER_URL = "https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/releases/download/openFirmware/firmware.bin";
   
-  mWifi->add_wifi_network("TheScientist", "angelaalmeidasantossilva");
+  mWifi->add_wifi_network("xxxxxxxx", "xxxxxxxxxxxxxxxxxxxxx");
   
   mWifi->ALWAYS_ON_WIFI=true;
   mWifi->WIFIscanNetworks();
