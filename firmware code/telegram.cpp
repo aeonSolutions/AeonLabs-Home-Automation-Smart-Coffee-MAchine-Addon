@@ -82,8 +82,8 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
     // Chat id of the requester
     String chat_id = String(this->bot->messages[i].chat_id);
     if (chat_id != this->CHAT_ID){
-      this->bot->sendMessage(chat_id, "Unauthorized user", "");
-      continue;
+      //this->bot->sendMessage(chat_id, "Unauthorized user", "");
+      //continue;
     }
     
     // Print the received message

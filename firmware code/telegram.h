@@ -32,9 +32,9 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 
 */
 #include "Arduino.h"
-#include "interface_class.h"
+#include "src/interface_class.h"
 #include "coffee_machine.h"
-#include "m_wifi.h"
+#include "src/m_wifi.h"
 #include <UniversalTelegramBot.h>   // Universal Telegram Bot Library written by Brian Lough: https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot
 #include <WiFiClientSecure.h>
 

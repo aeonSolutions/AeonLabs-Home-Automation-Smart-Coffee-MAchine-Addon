@@ -70,8 +70,9 @@ void COFFEE_MACHINE_CLASS::init(INTERFACE_CLASS* interface){
 
   this->boilerTemperature = new DS18B20_SENSOR();
   this->boilerTemperature->init(this->interface,  this->BOILER_DS18B20_TEMP_IO);
+  
   this->boilerTemperature->startDS18B20();
-
+  
   this->coffeeCup = new VL6180X_SENSOR();
   this->coffeeCup->init(this->interface);
   this->coffeeCup->startVL6180X();

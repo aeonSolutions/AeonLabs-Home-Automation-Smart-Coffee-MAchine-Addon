@@ -61,46 +61,46 @@ extern "C"
 TELEGRAM_CLASS* telegram = new TELEGRAM_CLASS();
 
 // custom functions
-#include "m_file_functions.h"
+#include "src/m_file_functions.h"
 
 // Interface class ******************************
-#include "interface_class.h"
+#include "src/interface_class.h"
 INTERFACE_CLASS* interface = new INTERFACE_CLASS();
 #define DEVICE_NAME "Smart Coffee Machine"
 
 // GBRL commands  ***************************
-#include "gbrl.h"
+#include "src/gbrl.h"
 GBRL gbrl = GBRL();
 
 // Onboard sensors  *******************************
-#include "onboard_sensors.h"
+#include "src/onboard_sensors.h"
 ONBOARD_SENSORS* onBoardSensors = new ONBOARD_SENSORS();
 
 // unique figerprint data ID
-#include "m_atsha204.h"
+#include "src/m_atsha204.h"
 
 // serial comm
 #include <HardwareSerial.h>
 HardwareSerial UARTserial(0);
 
-#include "mserial.h"
+#include "src/mserial.h"
 mSerial* mserial = new mSerial(true, &UARTserial);
 
 // File class
 #include <esp_partition.h>
 #include "FS.h"
 #include <LittleFS.h>
-#include "m_file_class.h"
+#include "src/m_file_class.h"
 
 FILE_CLASS* drive = new FILE_CLASS(mserial);
 
 // WIFI Class
 #include <ESP32Ping.h>
-#include "m_wifi.h"
+#include "src/m_wifi.h"
 M_WIFI_CLASS* mWifi = new M_WIFI_CLASS();
 
 // Certificates
-#include "github_cert.h"
+#include "src/cert/github_cert.h"
 
 // Coffee Machine 
 #include "coffee_machine.h"
@@ -298,12 +298,12 @@ void setup() {
     interface->onBoardLED->statusLED(100, 2);
   }
 
+  // init onboard sensors ___________________________
+  onBoardSensors->init(interface, mserial);
+  
   if (SCAN_I2C_BUS) {
     onBoardSensors->I2Cscanner();
   }
-
-  // init onboard sensors ___________________________
-  onBoardSensors->init(interface, mserial);
   
   if (TEST_FINGERPRINT_ID_IC) {
     mserial->printStrln("Testing the Unique FingerPrind ID for Sensor Data Measurements");
