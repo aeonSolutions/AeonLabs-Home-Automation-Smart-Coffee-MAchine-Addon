@@ -72,13 +72,13 @@ Is now #official. Anyone can "buy me a coffee" on Telegram. Just start a convers
 
 
 Available commands:
- - `/start`      : to view available commands on the Coffee Machine i have at my home
- - `/coffee`  : to "buy" Miguel a cup of Coffee
- - `/tea`     : to "buy" Miguel a cup of Tea
- - `/cappuccino` : to buy a cup of Cappuccino
- - `/decaf`      : to buy a cup of decaf. coffee
- - `/accept`       : to accept an offer made by another person
- - `/status`     : to view the current status of the Philips Senseo Coffee Machine
+ - `/start`                      : to view available commands on the Coffee Machine i have at my home
+ - `/coffee`                     : to "buy" Miguel a cup of Coffee
+ - `/tea`                        : to "buy" Miguel a cup of Tea
+ - `/cappuccino`                 : to buy a cup of Cappuccino
+ - `/decaf`                      : to buy a cup of decaf. coffee
+ - `/accept`[long/normal/short]  : to accept an offer made by another person
+ - `/status`                     : to view the current status of the Philips Senseo Coffee Machine
 
 Try it out is free and is #FUN. No money is asked! Great for a meeting or a conversation online. No excuses not to have a cup of coffee with colleagues while working remotely. 
 
