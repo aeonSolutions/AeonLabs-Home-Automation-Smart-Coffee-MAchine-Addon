@@ -183,6 +183,8 @@ Don't forget to checkout some cool photos of assembly on a Philips Senseo Coffee
 ## Firmware Download 
 one can use the PCB in the repository [AeonLabs-MCU-Burner-USB-to-UART-TTL](https://github.com/aeonSolutions/AeonLabs-MCU-Burner-USB-to-UART-TTL) to program the ESP32 WROOM32 MCU on this PCB.
 
+<br>
+
 ## Other similar projects
 
 - [Smart coffee machine on local network](https://github.com/cryptax/webpresso)
