@@ -77,6 +77,7 @@ Available commands:
  - `/tea`     : to "buy" Miguel a cup of Tea
  - `/cappuccino` : to buy a cup of Cappuccino
  - `/decaf`      : to buy a cup of decaf. coffee
+ - `/accept`       : to accept an offer made by anther person
  - `/status`     : to view the current status of the Philips Senseo Coffee Machine
 
 Try it out is free and is #FUN. No money is asked! Great for a meeting or a conversation online. No excuses not to have a cup of coffee with colleagues while working remotely. 
