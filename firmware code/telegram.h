@@ -57,7 +57,8 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
         String orderRequestType;
         long int orderRequestTime;
         String CupOrderSize;
-                
+        String orderRequestUsername;
+
         WiFiClientSecure client;
         UniversalTelegramBot* bot;
 

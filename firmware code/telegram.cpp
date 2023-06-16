@@ -41,6 +41,7 @@ TELEGRAM_CLASS::TELEGRAM_CLASS() {
     this->openOrderRequest = false;
 
     this->CupOrderSize ="normal";
+    this->orderRequestUsername = "xxxxxx";
 
     this->orderRequestChatID = "xxxxxxxxxx";
     this->orderRequestType = "xxxxxxxx";
@@ -136,9 +137,10 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
         }else{
           this->CupOrderSize = "normal";
         }
+        this->checkMaxDailyCups(this->orderRequestChatID, this->orderRequestUsername, this->orderRequestType);
         this->makeCup(this->orderRequestChatID, this->orderRequestType);
       }else{
-        this->bot->sendMessage(this->OWNER_CHAT_ID, "No request made for Brewing a Cup. ", "");
+        this->bot->sendMessage(this->OWNER_CHAT_ID, "No request was made for brewing a cup. ", "");
       }
     }
     
@@ -165,10 +167,19 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       continue;
     }
     // _________________________________________________________________
+    String notifyRequestStr =""; 
 
     if (text == "/cappuccino") {
-      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of cappuccino request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->checkMaxDailyCups(chat_id, from_name, "cappuccino");
+      this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of cappuccino to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      
+      notifyRequestStr = from_name + " sent an offer for a cup ☕️ of cappuccino. Do you accept?\n";
+      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "\n";
+      this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
+
+      this->orderRequestUsername = from_name;
       this->openOrderRequest = true;
       this->orderRequestChatID = chat_id;
       this->orderRequestType = text.substring(1,text.length());
@@ -176,8 +187,16 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
     }
     
     if (text == "/decaf") {
-      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of decaffeinated coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->checkMaxDailyCups(chat_id, from_name, "decaffeinated coffee");
+      this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of decaffeinated coffee to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      
+      notifyRequestStr = from_name + " sent an offer for a cup ☕️ of decaffeinated coffee. Do you accept?\n";
+      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "\n";
+      this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
+
+      this->orderRequestUsername = from_name;
       this->openOrderRequest = true;
       this->orderRequestChatID = chat_id;
       this->orderRequestType = text.substring(1,text.length());
@@ -185,8 +204,16 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
     }
     
     if (text == "/coffee") {
-      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of coffee request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->checkMaxDailyCups(chat_id, from_name, "coffee");
+      this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of coffee to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      
+      notifyRequestStr = from_name + " sent an offer for a cup ☕️ of coffee. Do you accept?\n";
+      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "\n";
+      this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
+
+      this->orderRequestUsername = from_name;
       this->openOrderRequest = true;
       this->orderRequestChatID = chat_id;
       this->orderRequestType = text.substring(1,text.length());
@@ -194,8 +221,16 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
     }
     
     if (text == "/tea") {
-      this->bot->sendMessage(chat_id, "You just sent a cup ☕️ of tea request to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
-      this->checkMaxDailyCups(chat_id, from_name, "tea");
+      this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of tea to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
+      
+      notifyRequestStr = from_name + " sent an offer for a cup ☕️ of tea. Do you accept?\n";
+      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "\n";
+      this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
+
+      this->orderRequestUsername = from_name;
       this->openOrderRequest = true;
       this->orderRequestChatID = chat_id;
       this->orderRequestType = text.substring(1,text.length());

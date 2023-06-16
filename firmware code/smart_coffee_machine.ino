@@ -270,9 +270,9 @@ void setup() {
   coffeeMachine->coffeeMachineBrand = "Philips Senseo";
 
 // _____________________ TELEGRAM _____________________________
-  telegram->OWNER_CHAT_ID = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
+  telegram->OWNER_CHAT_ID = "1435561519";
   // Initialize Telegram BOT
-  telegram->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
+  telegram->BOTtoken = "5813926838:AAFwC1cV_QghdZiVUP8lAwbg9mNvkWc27jA";  // your Bot Token (Get from Botfather)
 
   // ......................................................................................................
   // .......................... END OF IO & PIN CONFIGURATION..............................................
@@ -345,7 +345,9 @@ void setup() {
   //init wifi
   mWifi->init(interface, drive, interface->onBoardLED);
   mWifi->OTA_FIRMWARE_SERVER_URL = "https://github.com/aeonSolutions/AeonLabs-Home-Automation-Smart-Coffee-MAchine-Addon/releases/download/openFirmware/firmware.bin";
-    
+  
+  mWifi->add_wifi_network("TheScientist", "angelaalmeidasantossilva");
+  
   mWifi->ALWAYS_ON_WIFI=true;
   mWifi->WIFIscanNetworks();
   
@@ -392,8 +394,11 @@ void setup() {
   mserial->printStrln("done. ");
 
   mserial->printStrln("Free memory: " + addThousandSeparators( std::string( String(esp_get_free_heap_size() ).c_str() ) ) + " bytes");
-  mserial->printStrln("\nSetup is completed. You may start using the " + String(DEVICE_NAME) );
-  mserial->printStrln("Type $? for a List of commands.\n");
+  
+  mserial->printStrln("============================================================================");
+  mserial->printStrln("Setup is completed. You may start using the " + String(DEVICE_NAME) );
+  mserial->printStrln("Type $? for a List of commands.");
+  mserial->printStrln("============================================================================\n");
 
   interface->onBoardLED->led[0] = interface->onBoardLED->LED_GREEN;
   interface->onBoardLED->statusLED(100, 1);
@@ -482,7 +487,7 @@ void loop2 (void* pvParameters) {
 
 //************************** == Core 2: Connectivity WIFI & BLE == ***********************************************************
 void loop(){  
-  if (millis() - beacon > 30000) {    
+  if (millis() - beacon > 60000) {    
     beacon = millis();
     mserial->printStrln("(" + String(beacon) + ") Free memory: " + addThousandSeparators( std::string( String(esp_get_free_heap_size() ).c_str() ) ) + " bytes\n", mSerial::DEBUG_TYPE_VERBOSE, mSerial::DEBUG_ALL_USB_UART_BLE);
   }
@@ -500,7 +505,7 @@ void loop(){
   // .............................................................................
   // disconnected for at least 3min
   // change MCU freq to min
-  if (  mWifi->getBLEconnectivityStatus() == false && ( millis() - mWifi->$espunixtimeDeviceDisconnected > 180000) && interface->CURRENT_CLOCK_FREQUENCY >= interface->WIFI_FREQUENCY) {
+  if ( mWifi->ALWAYS_ON_WIFI == false && mWifi->getBLEconnectivityStatus() == false && ( millis() - mWifi->$espunixtimeDeviceDisconnected > 180000) && interface->CURRENT_CLOCK_FREQUENCY >= interface->WIFI_FREQUENCY) {
     mserial->printStrln("setting min MCU freq.");
     btStop();
     //BLEDevice::deinit(); // crashes the device
