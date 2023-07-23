@@ -17,6 +17,12 @@
 [PCB-Prototyping-Catalogue](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue)  >>  [Home-Automation](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation)  >>  [Smart Home Appliances](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation/Smart%20Home%20Appliances)  >>  [Kitchen](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation/Smart%20Home%20Appliances/kitchen)  >>  Smart Coffee Machine
 
 # Smart Coffee Machine Add-on
+Buy on [Tindie.com](https://www.tindie.com/products/aeonlabs/home-automation-smart-coffee-machine-addon/) or on [Gumroad.com ](https://3455782655596.gumroad.com/l/uexgjh)
+
+If you prefer, can read this project on Autodesk's Intructables.com website, [here](https://www.instructables.com/member/mtpsilva/?publicPreview=true) or on Hackster.io website [here](https://www.hackster.io/mtpsilva/smart-add-on-for-the-philips-senseo-coffee-machine-06d9bf).
+
+
+
 
 ### The Problem
 Nowadays there are countless coffee machines however with limited to no smart functionality. With this new way of doing work remotely buying a cup of coffee for a colleague, friend or family is not possible.
