@@ -28,7 +28,13 @@ Nowadays there are countless coffee machines however with limited to no smart fu
 This Home Automation Smart Coffee Machine Addon is easy installation on any home or office coffee machine, to enable any vintage coffee machine connectivity to the internet (or a personal network). The PCB uses an ESP32 S3 packed with Bluetooth, BLE, and WiFi compatible with major software vendors such as Apple Home, Google Home, Matter/Zigbee, Home Assistant, and many others.
 The custom firmware being coded includes the functionality of someone paying for a cup of coffee using any home banking App, Paypal, Stripe on any other means of payment. In return, it sends a receipt as proof a coffee was indeed brewed on the coffee machine.
 
-If you prefer, can read this project on Autodesk's Intructables.com website, [here](https://www.instructables.com/member/mtpsilva/?publicPreview=true) or on Hackster.io website [here](https://www.hackster.io/mtpsilva/smart-add-on-for-the-philips-senseo-coffee-machine-06d9bf).
+If you prefer, can read this project on ....
+
+- Autodesk's Intructables.com website, [here](https://www.instructables.com/member/mtpsilva/?publicPreview=true)
+- Hackster.io website [here](https://www.hackster.io/mtpsilva/smart-add-on-for-the-philips-senseo-coffee-machine-06d9bf)
+- Medium.com webiste [here](https://medium.com/@mtpsilva)
+
+<br>
 
 **Functionalities available:** 
 
