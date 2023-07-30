@@ -36,6 +36,10 @@ If you prefer, can read this project on ....
 
 <br>
 
+I've created a WhatsApp Chat for aditional support of feedback, join us [here](https://chat.whatsapp.com/FkNC7u83kuy2QRA5sqjBVg) !
+
+<br>
+
 **Functionalities available:** 
 
 * Control water temperature;
