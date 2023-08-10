@@ -21,6 +21,12 @@ Buy on [Tindie.com](https://www.tindie.com/products/aeonlabs/home-automation-sma
 
 <br>
 
+think about the possibility of ordering a cup of coffee directly from Telegram even before you arrive at the cafe on a sunny day.... or sitting inside on a rainy day.....
+
+
+...imagine the coffee machine replying to you and asking if you want a lot or less sugar? do you want milk in your coffee? Better, what temperature do you want for your coffee.
+
+<br>
 ### The Problem
 Nowadays there are countless coffee machines however with limited to no smart functionality. With this new way of doing work remotely buying a cup of coffee for a colleague, friend or family is not possible.
 
