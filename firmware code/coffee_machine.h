@@ -34,9 +34,9 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 #include "Arduino.h"
 #include "max6675.h"
 
-#include "src/interface_class.h"
-#include "src/sensors/ds18b20.h"
-#include "src/sensors/vl6180x.h"
+#include "interface_class.h"
+#include "sensors/ds18b20.h"
+#include "sensors/vl6180x.h"
 
 #ifndef COFFEE_MACHINE_DEF  
   #define COFFEE_MACHINE_DEF

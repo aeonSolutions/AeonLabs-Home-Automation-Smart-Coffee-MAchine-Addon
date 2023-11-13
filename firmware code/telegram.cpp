@@ -47,6 +47,11 @@ TELEGRAM_CLASS::TELEGRAM_CLASS() {
     this->orderRequestType = "xxxxxxxx";
     this->orderRequestTime = 0;
 
+    this->totalCoffees = 0;
+    this->totalTea = 0;
+    this->totalDecaf = 0;
+    this->totalCapuccino = 0;
+        
     this->OWNER_CHAT_ID = "xxxxxxxxxxx";
     // Initialize Telegram BOT
     this->BOTtoken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // your Bot Token (Get from Botfather)
@@ -173,9 +178,9 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of cappuccino to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
       
       notifyRequestStr = from_name + " sent an offer for a cup ☕️ of cappuccino. Do you accept?\n";
-      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
-      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
-      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "/accept_short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept_normal' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept_long   to accept the offer and brew a long cup\n";
       notifyRequestStr += "\n";
       this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
 
@@ -190,9 +195,9 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of decaffeinated coffee to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
       
       notifyRequestStr = from_name + " sent an offer for a cup ☕️ of decaffeinated coffee. Do you accept?\n";
-      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
-      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
-      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "/accept_short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept_normal' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept_long   to accept the offer and brew a long cup\n";
       notifyRequestStr += "\n";
       this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
 
@@ -207,9 +212,9 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of coffee to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
       
       notifyRequestStr = from_name + " sent an offer for a cup ☕️ of coffee. Do you accept?\n";
-      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
-      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
-      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "/accept_short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept_normal' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept_long   to accept the offer and brew a long cup\n";
       notifyRequestStr += "\n";
       this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
 
@@ -224,9 +229,9 @@ void TELEGRAM_CLASS::handleNewMessages(int numNewMessages) {
       this->bot->sendMessage(chat_id, "You just sent a request for a cup ☕️ of tea to Miguel's " + this->coffeeMachine->coffeeMachineBrand + " Coffee Machine", "");
       
       notifyRequestStr = from_name + " sent an offer for a cup ☕️ of tea. Do you accept?\n";
-      notifyRequestStr += "/accept short  to accept the offer and brew a short cup\n";
-      notifyRequestStr += "/accept norma' to accept the offer and brew a normal cup\n";
-      notifyRequestStr += "/accept long   to accept the offer and brew a long cup\n";
+      notifyRequestStr += "/accept_short  to accept the offer and brew a short cup\n";
+      notifyRequestStr += "/accept_normal' to accept the offer and brew a normal cup\n";
+      notifyRequestStr += "/accept_long   to accept the offer and brew a long cup\n";
       notifyRequestStr += "\n";
       this->bot->sendMessage(this->OWNER_CHAT_ID, notifyRequestStr );
 
@@ -255,16 +260,32 @@ bool TELEGRAM_CLASS::makeCup(String chat_id, String what){
       return false;
     }
     this->bot->sendMessage(chat_id," done. Thank you for your thoughtful offer 👍🏼🙏🏼.", "");
+    this->bot->sendMessage(this->OWNER_CHAT_ID, "Your cup ☕️ of " + this->orderRequestType + " is ready. 👍🏼" );
     return true;
   }
 }
 
 // ****************************************************
 bool TELEGRAM_CLASS:: checkMaxDailyCups( String chat_id, String from_name, String what ){
+
+      if ( what.equals("coffee") ){   
+        this->totalCoffees++;          
+      }
+      if ( what.equals("decaffeinated coffee") ){   
+        this->totalDecaf++;          
+      }
+      if ( what.equals("cappuccino") ){   
+        this->totalCapuccino++;          
+      }
+      if ( what.equals("tea") ){
+        this->totalTea++;
+      }
+              
   if ( what.equals("decaffeinated coffee") || what.equals("coffee") || what.equals("cappuccino") ){    
     if( this->coffeeMachine->config.maxCoffeeCupsPerDay == ( this->coffeeMachine->config.numCoffeeCupsToday +1) ){
       this->bot->sendMessage(chat_id, from_name +", i think this will be my last cup of " + what +" today 👌🏼...", "");  
       this->coffeeMachine->updateNumCoffeeCupsToday();
+
       return true;   
     }else if ( (this->coffeeMachine->config.numCoffeeCupsToday+1) > this->coffeeMachine->config.maxCoffeeCupsPerDay ){
       this->bot->sendMessage(chat_id, from_name + ", I already had too much " + what +" today 🤪 ... ", "");  
@@ -280,6 +301,8 @@ bool TELEGRAM_CLASS:: checkMaxDailyCups( String chat_id, String from_name, Strin
     if( this->coffeeMachine->config.maxTeaCupsPerDay ==  (this->coffeeMachine->config.numTeaCupsToday +1) ){
       this->bot->sendMessage(chat_id, from_name +", i think this will be my last cup of " + what +" today 👌🏼...", "");  
       this->coffeeMachine->updateNumTeaCupsToday();
+      this->totalTea++;
+                  
       return true;   
     }else if ( (this->coffeeMachine->config.numTeaCupsToday+1) > this->coffeeMachine->config.maxTeaCupsPerDay  ){
       this->bot->sendMessage(chat_id, from_name + ", I already had too much " + what +" today 🤪 ... ", "");  

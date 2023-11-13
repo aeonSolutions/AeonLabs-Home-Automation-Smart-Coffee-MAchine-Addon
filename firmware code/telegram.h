@@ -32,9 +32,9 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
 
 */
 #include "Arduino.h"
-#include "src/interface_class.h"
+#include "interface_class.h"
 #include "coffee_machine.h"
-#include "src/m_wifi.h"
+#include "m_wifi.h"
 #include <UniversalTelegramBot.h>   // Universal Telegram Bot Library written by Brian Lough: https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot
 #include <WiFiClientSecure.h>
 
@@ -65,6 +65,11 @@ https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/wiki/AeonLabs-Solutio
         int botRequestDelay;
         unsigned long lastTimeBotRan;
 
+        int totalCoffees;
+        int totalTea;
+        int totalDecaf;
+        int totalCapuccino;
+        
         TELEGRAM_CLASS();
         void init(INTERFACE_CLASS* interface,  M_WIFI_CLASS* mWifi, COFFEE_MACHINE_CLASS* coffeeMachine );
         void handleNewMessages(int numNewMessages);

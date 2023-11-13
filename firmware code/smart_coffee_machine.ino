@@ -34,6 +34,40 @@
 
 #define uS_TO_S_FACTOR 1000000
 
+/************************* Adafruit.io Setup *********************************/
+//required message queue telemetry transport protocol to subscribe and publish feeds
+#include "Adafruit_MQTT.h"
+#include "Adafruit_MQTT_Client.h"
+
+// the adafruit server to connect
+#define AIO_SERVER    "io.adafruit.com"
+
+// the port to connect
+#define AIO_SERVERPORT 1883
+
+// get this key from your own Adafruit Account
+#define AIO_USERNAME "aeonlabs"
+#define AIO_KEY "aio_OkVp793x9MRX2ppomTSosusEVE8R"
+#include <WiFi.h>
+WiFiClient wclient;
+
+Adafruit_MQTT_Client mqtt(&wclient, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
+
+//Feeds Settings
+
+//temperature value that will be read through BMP180 sensor
+Adafruit_MQTT_Publish totalNumberDecaf = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/decaf");
+
+//pressure value that will be read through BMP180 sensor
+Adafruit_MQTT_Publish totalNumberCoffee = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/coffee");
+
+//altitude value that will be read through BMP180 sensor
+Adafruit_MQTT_Publish totalNumberTea = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/tea");
+
+// Setup a feed called 'bluelight' for subscribing to changes.
+Adafruit_MQTT_Publish totalNumberCapuccino = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/capuccino");
+
+
 //----------------------------------------------------------------------------------------
 // Components Testing  **************************************
 bool SCAN_I2C_BUS = true;
@@ -61,46 +95,46 @@ extern "C"
 TELEGRAM_CLASS* telegram = new TELEGRAM_CLASS();
 
 // custom functions
-#include "src/m_file_functions.h"
+#include "m_file_functions.h"
 
 // Interface class ******************************
-#include "src/interface_class.h"
+#include "interface_class.h"
 INTERFACE_CLASS* interface = new INTERFACE_CLASS();
 #define DEVICE_NAME "Smart Coffee Machine"
 
 // GBRL commands  ***************************
-#include "src/gbrl.h"
+#include "gbrl.h"
 GBRL gbrl = GBRL();
 
 // Onboard sensors  *******************************
-#include "src/onboard_sensors.h"
+#include "onboard_sensors.h"
 ONBOARD_SENSORS* onBoardSensors = new ONBOARD_SENSORS();
 
 // unique figerprint data ID
-#include "src/m_atsha204.h"
+#include "m_atsha204.h"
 
 // serial comm
 #include <HardwareSerial.h>
 HardwareSerial UARTserial(0);
 
-#include "src/mserial.h"
+#include "mserial.h"
 mSerial* mserial = new mSerial(true, &UARTserial);
 
 // File class
 #include <esp_partition.h>
 #include "FS.h"
 #include <LittleFS.h>
-#include "src/m_file_class.h"
+#include "m_file_class.h"
 
 FILE_CLASS* drive = new FILE_CLASS(mserial);
 
 // WIFI Class
 #include <ESP32Ping.h>
-#include "src/m_wifi.h"
+#include "m_wifi.h"
 M_WIFI_CLASS* mWifi = new M_WIFI_CLASS();
 
 // Certificates
-#include "src/cert/github_cert.h"
+#include "cert/github_cert.h"
 
 // Coffee Machine 
 #include "coffee_machine.h"
@@ -404,6 +438,37 @@ void setup() {
   interface->onBoardLED->statusLED(100, 1);
 
 }
+
+// *********************** MQTT *****************************
+bool MQTT_connect() {
+   int8_t retvar;
+   if (mqtt.connected()) {
+      return true;
+   }
+   Serial.print("Connecting to MQTT... ");
+   uint8_t trytimes = 3;
+   while ((retvar = mqtt.connect()) != 0) {
+      mserial->printStrln(String(mqtt.connectErrorString(retvar)));
+      mserial->printStrln("retrying MQTT connection in 5500 mseconds...");
+      mqtt.disconnect();
+      delay(5500); // wait 5 seconds
+      trytimes--;
+      if (trytimes == 0) {
+         return false;
+      }
+   }
+   return true;
+}
+// ....................................
+bool publishData(Adafruit_MQTT_Publish *publishData, int dataVal){
+   if (! publishData->publish(dataVal)) {
+     mserial->printStrln("Data publish Failed: " + String(dataVal) );
+     return false;
+   } else {
+     mserial->printStrln("Data publish OK: " + String(dataVal) );
+     return true;
+   }
+}
 // ********END SETUP *********************************************************
 
 void GBRLcommands(String command, uint8_t sendTo) {
@@ -472,6 +537,8 @@ String dataStr = "";
 long int eTime;
 long int statusTime = millis();
 long int beacon = millis();
+long int MQTT_beacon = millis();
+
 // adc_power_release()
 
 unsigned int cycle = 0;
@@ -539,6 +606,18 @@ void loop(){
   // .....................................................................
   // Telegram
   telegram->runTelegramBot();
+
+  // .............................................................
+
+  if (millis() - MQTT_beacon > 60000) {    
+    MQTT_beacon = millis();
+    mWifi->start(10000,5);
+    MQTT_connect();
+    publishData( &totalNumberDecaf, telegram->totalDecaf );
+    publishData( &totalNumberCoffee, telegram->totalCoffees );
+    publishData( &totalNumberTea, telegram->totalTea );
+    publishData( &totalNumberCapuccino , telegram->totalCapuccino );
+  }  
 
   // ................................................................................    
 
