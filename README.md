@@ -109,6 +109,7 @@ The OEM version of the firmware code can be found on the folder **firmware code*
 
 **How to use the firmware code** <br>
 Install all library dependecies (see below). <br>
+unzip the "firmware code" folder and rename it with the name of the .ino file it contains. <br> 
 Open the .ino file in Arduino Studio. <br>
 Select the ESP32 S3 MCU / board from the menu, and then the code should compile. if not, follow the instructions shown in the debug console. <br>
 
