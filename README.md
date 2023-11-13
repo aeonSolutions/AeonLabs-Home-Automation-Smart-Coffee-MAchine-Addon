@@ -106,8 +106,16 @@ Try it out is free and is #FUN. No money is asked! Great for a meeting or a co
 ## OEM Firmware code
 The OEM version of the firmware code can be found on the folder **firmware code**.  It has by default OTA updates, meaning the smart coffee machine add-on device automatically updates it self when newer updated versions made available here.  
 
-This code uses my own ESP32 c++ class libraries to expedite development of code of ESP32 microcontrollers. The repository is located [here](https://github.com/aeonSolutions/aeonlabs-ESP32-C-Base-Firmware-Libraries#readme) for anyone to use.
 
+**How to use the firmware code** <br>
+Install all library dependecies (see below). <br>
+Open the .ino file in Arduino Studio. <br>
+Select the ESP32 S3 MCU / board from the menu, and then the code should compile. if not, follow the instructions shown in the debug console. <br>
+
+**Library Dependencies** <br> 
+This code uses my own ESP32 c++ class libraries to expedite development of code of ESP32 microcontrollers. 
+- ✓ Aeonlabs Base Libraries [view](https://github.com/aeonSolutions/aeonlabs-ESP32-C-Base-Firmware-Libraries)
+  
 <br>
 
 ## Features requests 
@@ -120,19 +128,19 @@ This code uses my own ESP32 c++ class libraries to expedite development of code 
 
 <p align="center">
  <a href"https://www.apple.com/shop/accessories/all/homekit">
-<img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/works_with_apple_home.png" height="50">
+<img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/works_with_apple_home.png" height="50">
  </a>
 <a href="https://home.google.com"> 
- <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/works_with_google_home.png" height="50">
+ <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/works_with_google_home.png" height="50">
  </a>
 <a href="https://www.home-assistant.io">  
- <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/works_with_home_assistanr.png" height="50">
+ <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/works_with_home_assistanr.png" height="50">
  </a>
 <a href="https://csa-iot.org/all-solutions/matter/">  
- <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/works_with_matter.png" height="50">
+ <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/works_with_matter.png" height="50">
  </a>
 <a href="https://csa-iot.org/all-solutions/matter/">  
- <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/works_with_zigbee.jpg" height="50">
+ <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/works_with_zigbee.jpg" height="50">
  </a>
 </p>
 
@@ -161,7 +169,7 @@ Alternatively, and if you do not want to build a PCB by yourself and like to buy
 
 <p align="center">
 <a href="https://www.tindie.com/stores/aeonlabs/">
-   <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/tindie_sell.png"  width="150" />
+   <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/tindie_sell.png"  width="150" />
 </a>
  </p>
 
