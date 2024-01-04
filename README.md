@@ -11,7 +11,7 @@
 <br />
 
 <p align="center">
-   <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/Photo%2BDec%2B11%2C%2B1%2B39%2B43%2BAM.jpg" height="300">
+   <img src="https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/blob/main/media/Photo%2BDec%2B11%2C%2B1%2B39%2B43%2BAM.jpg" width="100%">
 </p>
 
 [PCB-Prototyping-Catalogue](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue)  >>  [Home-Automation](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation)  >>  [Smart Home Appliances](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation/Smart%20Home%20Appliances)  >>  [Kitchen](https://github.com/aeonSolutions/PCB-Prototyping-Catalogue/tree/main/Home-Automation/Smart%20Home%20Appliances/kitchen)  >>  Smart Coffee Machine
@@ -21,11 +21,17 @@
 Last update: 15-11-2023
 </p>
 
-# Smart Coffee Machine Add-on
+# Smart Coffee Machine add-on 
 Buy on [Tindie.com](https://www.tindie.com/products/aeonlabs/home-automation-smart-coffee-machine-addon/) or on [Gumroad.com ](https://3455782655596.gumroad.com/l/uexgjh)
 
-<br>
-
+<p align="left"> 
+ <img height="15" src="https://github.com/aeonSolutions/AeonLabs-WIFI-BLE-RFID-NFC-Desk-Contacless-Reader-Writer/blob/main/designs/working_green.png"> 
+<b>Status:</b>
+ Hardware electronics are Fully tested and working. First 🥇 release of the firmware code is now available. <br>
+&nbsp; Looking for someone available to collaborate on the firmware coding. If you like this project and want faster development, prototyping and testing consider a donation or sponsoring. thank you 🙏.
+ </p>
+ 
+## Intro
 think about the possibility of ordering a cup of coffee directly from Telegram even before you arrive at the cafe on a sunny day.... or sitting inside on a rainy day.....
 
 
