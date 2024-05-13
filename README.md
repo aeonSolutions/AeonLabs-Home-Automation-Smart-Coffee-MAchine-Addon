@@ -22,7 +22,7 @@ Last update: 15-11-2023
 </p>
 
 # Smart Coffee Machine add-on 
-Buy on [Tindie.com](https://www.tindie.com/products/aeonlabs/home-automation-smart-coffee-machine-addon/) or on [Gumroad.com ](https://3455782655596.gumroad.com/l/uexgjh)
+<sup> **status: <a href="https://en.wikipedia.org/wiki/Minimum_viable_product">M.V.P.</a>** NOW SELLING on <a href="tindie.com/stores/aeonlabs/">Tindie.com</a>  </sup> <br>
 
 <p align="left"> 
  <img height="15" src="https://github.com/aeonSolutions/AeonLabs-WIFI-BLE-RFID-NFC-Desk-Contacless-Reader-Writer/blob/main/designs/working_green.png"> 
